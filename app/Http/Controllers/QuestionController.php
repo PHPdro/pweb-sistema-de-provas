@@ -5,33 +5,44 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Models\Option;
 
 class QuestionController extends Controller
 {
     public function index() {
+
         return view('create');
     }
 
-    public function create() {
+    public function store(Request $request) {
 
-        $questions = Question::all();
+        $option = new Option;
+        $question = new Question;
 
-        if (!empty($_POST['tipos'])) {
-            $tipo = $_POST['tipos'];
-        }
+        $id_questao = random_int(100000, 999999);
+        $tipo = $request->tipo;
 
-         if ($tipo == 2) {
-            if (!empty($_POST['opcao'])) {
-                $correta = $_POST['opcao'];
-            }
-            $resposta1 = request()->input('1');
-            $resposta2 = request()->input('2');
-            $resposta3 = request()->input('3');
-            $resposta4 = request()->input('4');
+        $question->id_questao = $id_questao;
+        $question->disciplina = $request->disciplina;
+        $question->nivel = $request->nivel;
+        $question->enunciado = $request->enunciado;
+
+        $option->id_questao = $id_questao;
+
+        if ($tipo == 1) {
+
+            $tipo = "Aberta";
+            $question->tipo = $tipo;
+            $question->save();
+            return redirect('/');
             
-        }
-        $respostas = array($resposta1, $resposta2, $resposta3, $resposta4);
+        } elseif ($tipo == 2) {
 
-        return view('teste', compact('tipo','correta','respostas'));
+        } elseif ($tipo == 3) {
+
+        } else {
+
+        }
+
     }
 }

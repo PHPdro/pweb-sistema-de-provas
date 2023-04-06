@@ -8,20 +8,20 @@
 
     @csrf
 
-    <h3>QUESTÃO</h3>
+    <h3>CRIAR QUESTÃO</h3>
 
     <p>Disciplina:
-        <select id="disciplinas">
+        <select id="disciplina" name="disciplina">
             <option class="escolha" disabled selected value> -- Escolha uma opção --</option>
-            <option value="pweb">Programação Web</option>
-            <option value="proo">Programação Orientada a Objetos</option>
-            <option value="apsi">Análise e Projeto de Sistemas de Informação</option>
-            <option value="fnre">Fundamentos de Redes de Computadores</option>
+            <option value="PWEB">Programação Web</option>
+            <option value="PROO">Programação Orientada a Objetos</option>
+            <option value="APSI">Análise e Projeto de Sistemas de Informação</option>
+            <option value="FNRE">Fundamentos de Redes de Computadores</option>
         </select>
     </p>
 
     <p>Dificuldade:
-        <select id="dificuldade">
+        <select id="nivel" name="nivel">
             <option class="escolha" disabled selected value> -- Escolha uma opção --</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -32,7 +32,7 @@
     </p>
 
     <p>Tipo de questão:
-        <select name="tipos" id="tipos" onchange="escolherQuestao()">
+        <select id="tipo" name="tipo">
             <option class="escolha" disabled selected value style> -- Escolha uma opção --</option>
             <option value="1">Aberta</option>
             <option value="2">Múltipla escolha (1 correta)</option>
@@ -41,31 +41,49 @@
         </select>
     </p>
 
-    <div id="questao-aberta" style="display:none;"> 
-        <p>Enunciado: <input type="text"></p>
-        <p><button type="submit">Salvar</button></p>
+    <div id="enunciado" name="enunciado" style="display:none;">
+        <textarea name="enunciado" id="enunciado" cols="50" rows="4" placeholder="Enunciado..."></textarea>
     </div>
 
+    <div id="questao-aberta" style="display:none;"> </div>
+
     <div id="questao-fechada-1" style="display:none;">
-        <p>Enunciado: <input type="text" name="enunciado"></p>
-        <input type="radio" name="opcao" value ="1"> <input type="text" name="1" placeholder="Opção 1..."><br>
-        <input type="radio" name="opcao" value ="2"> <input type="text" name="2" placeholder="Opção 2..."><br>
-        <input type="radio" name="opcao" value ="3"> <input type="text" name="3" placeholder="Opção 3..."><br>
-        <input type="radio" name="opcao" value ="4"> <input type="text" name="4" placeholder="Opção 4...">
-        <p><button type="submit">Salvar</button></p>
+        <table id="tabela_fechada_1">
+            <tr>
+                <td>
+                    <input type="radio" name="alternativa" value="1">
+                </td>
+                <td>
+                    <input type="text" name="respostafechada[]" placeholder="Resposta...">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="botoes_fechada_1" style="display:none;">
+        <a class="button" href="#" id="adicionar_fechada_1" onclick="adicionarAlternativa('tabela_fechada_1','radio','alternativa','respostafechada[]')">Adicionar</a>
+        <a class="button" href="#" id="remover_fechada_1" onclick="removerAlternativa('tabela_fechada_1')">Remover</a>
     </div>
 
     <div id="questao-fechada-2" style="display:none;">
-        <p>Enunciado: <input type="text" name="enunciado"></p>
-        <input type="checkbox" value ="1"> <input type="text" placeholder="Opção 1..."><br>
-        <input type="checkbox" value ="2"> <input type="text" placeholder="Opção 2..."><br>
-        <input type="checkbox" value ="3"> <input type="text" placeholder="Opção 3..."><br>
-        <input type="checkbox" value ="4"> <input type="text" placeholder="Opção 4...">
-        <p><button type="submit">Salvar</button></p>
+        <table id="tabela_fechada_2">
+            <tr>
+                <td>
+                    <input type="checkbox" name = "check[]" value ="1">
+                </td>
+                <td>
+                    <input type="text" name="respostafechada2[]" placeholder="Resposta...">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="botoes_fechada_2" style="display:none;">
+        <a class="button" href="#" id="adicionar_fechada_2" onclick="adicionarAlternativa('tabela_fechada_2','checkbox','check[]','respostafechada2[]')">Adicionar</a>
+        <a class="button" href="#" id="remover_fechada_2" onclick="removerAlternativa('tabela_fechada_2')">Remover</a>
     </div>
 
     <div id="questao-vf" style="display:none;">
-        <p>Enunciado: <input type="text" name="enunciado"></p>
         <table>
             <tr>
                 <th></th>
@@ -93,63 +111,11 @@
                 <td><input type="radio" name="q4" value="0"></td>
             </tr>
         </table>
-        <p><button type="submit">Salvar</button></p>
     </div>
+
+    <div id="salvar" style="display:none;"><p><button type="submit">Salvar</button></p></div>
 
 </form>
     
-<script>
-
-function escolherQuestao() {
-
-    var select = document.getElementById("tipos");
-    var valor = select.options[select.selectedIndex].value;
-    if (valor == 1) {
-
-        var fechada1 = document.getElementById("questao-fechada-1");
-        fechada1.style.display = 'none';
-        var fechada2 = document.getElementById("questao-fechada-2");
-        fechada2.style.display = 'none';
-        var vf = document.getElementById("questao-vf");
-        vf.style.display = 'none'
-        var aberta = document.getElementById("questao-aberta");
-        aberta.style.display = 'block';
-
-    } else if (valor == 2) {
-
-        var fechada1 = document.getElementById("questao-fechada-1");
-        fechada1.style.display = 'block';
-        var fechada2 = document.getElementById("questao-fechada-2");
-        fechada2.style.display = 'none';
-        var vf = document.getElementById("questao-vf");
-        vf.style.display = 'none'
-        var aberta = document.getElementById("questao-aberta");
-        aberta.style.display = 'none';
-
-    } else if ( valor == 3) {
-
-        var fechada1 = document.getElementById("questao-fechada-1");
-        fechada1.style.display = 'none';
-        var fechada2 = document.getElementById("questao-fechada-2");
-        fechada2.style.display = 'block';
-        var vf = document.getElementById("questao-vf");
-        vf.style.display = 'none'
-        var aberta = document.getElementById("questao-aberta");
-        aberta.style.display = 'none';
-
-    } else {
-
-        var fechada1 = document.getElementById("questao-fechada-1");
-        fechada1.style.display = 'none';
-        var fechada2 = document.getElementById("questao-fechada-2");
-        fechada2.style.display = 'none';
-        var vf = document.getElementById("questao-vf");
-        vf.style.display = 'block'
-        var aberta = document.getElementById("questao-aberta");
-        aberta.style.display = 'none';
-    }
-}
-
-</script>
-
+<script src="/js/script.js"></script>
 @endsection

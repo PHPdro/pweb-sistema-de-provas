@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('disciplina');
             $table->string('tipo');
             $table->integer('nivel');
+            $table->text('enunciado');
             $table->timestamps();
         });
     }
