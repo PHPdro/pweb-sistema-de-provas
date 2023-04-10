@@ -61,8 +61,16 @@
     </div>
 
     <div id="botoes_fechada_1" style="display:none;">
-        <a class="button" href="#" id="adicionar_fechada_1" onclick="adicionarAlternativa('tabela_fechada_1','radio','alternativa','respostafechada[]')">Adicionar</a>
-        <a class="button" href="#" id="remover_fechada_1" onclick="removerAlternativa('tabela_fechada_1')">Remover</a>
+        <table>
+            <tr>
+                <td>
+                    <a class="button" href="#" id="adicionar_fechada_1" onclick="adicionarAlternativa('tabela_fechada_1','radio','alternativa','respostafechada[]')">Adicionar</a>
+                </td>
+                <td>
+                    <a class="button" href="#" id="remover_fechada_1" onclick="removerAlternativa('tabela_fechada_1')">Remover</a>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <div id="questao-fechada-2" style="display:none;">
@@ -79,8 +87,16 @@
     </div>
 
     <div id="botoes_fechada_2" style="display:none;">
-        <a class="button" href="#" id="adicionar_fechada_2" onclick="adicionarAlternativa('tabela_fechada_2','checkbox','check[]','respostafechada2[]')">Adicionar</a>
-        <a class="button" href="#" id="remover_fechada_2" onclick="removerAlternativa('tabela_fechada_2')">Remover</a>
+        <table>
+            <tr>
+                <td>
+                    <a class="button" href="#" id="adicionar_fechada_2" onclick="adicionarAlternativa('tabela_fechada_2','checkbox','check[]','respostafechada2[]')">Adicionar</a>
+                </td>
+                <td>
+                    <a class="button" href="#" id="remover_fechada_2" onclick="removerAlternativa('tabela_fechada_2')">Remover</a>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <div id="questao-vf" style="display:none;">
@@ -91,24 +107,9 @@
                 <th>F</th>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Opção 1..."></td>
-                <td><input type="radio" name="q1" value="1"></td>
-                <td><input type="radio" name="q1" value="0"></td>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Opção 2..."></td>
-                <td><input type="radio" name="q2" value="1"></td>
-                <td><input type="radio" name="q2" value="0"></td>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Opção 3..."></td>
-                <td><input type="radio" name="q3" value="1"></td>
-                <td><input type="radio" name="q3" value="0"></td>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Opção 4..."></td>
-                <td><input type="radio" name="q4" value="1"></td>
-                <td><input type="radio" name="q4" value="0"></td>
+                <td><input type="text" placeholder="Texto..."></td>
+                <td><input type="radio" name="vf[]" value="1"></td>
+                <td><input type="radio" name="vf[]" value="0"></td>
             </tr>
         </table>
     </div>

@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/questions/create', [QuestionController::class, 'index']);
+Route::get('/questions', [QuestionController::class, 'index']);
+
+Route::get('/create', [QuestionController::class, 'create']);
 
 Route::post('/enviar', [QuestionController::class, 'store']);

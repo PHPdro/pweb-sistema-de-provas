@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->integer('id_questao', false);
             $table->foreign('id_questao')->references('id_questao')->on('questions');
-            $table->integer('alternativa');
-            $table->text('enunciado_alternativa');
-            $table->boolean('valor');
+            $table->string('tag');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('tags');
     }
 };

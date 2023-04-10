@@ -6,5 +6,5 @@
 
 <h1> SISTEMA DE PROVAS </h1>
 
-<a href="/questions/create">CRIAR QUESTÃO</a>
+<a href="/questions">QUESTÕES</a>
 @endsection
