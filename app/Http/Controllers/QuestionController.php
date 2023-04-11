@@ -23,8 +23,6 @@ class QuestionController extends Controller
     
     public function store(Request $request) {
 
-        // return $request->vf;
-
         $question = new Question;
 
         $id_questao = random_int(100000, 999999);
@@ -108,7 +106,28 @@ class QuestionController extends Controller
             $question->tipo = $tipo;
             $question->save();
 
-        }
+            $alternativas = $request->respostavf;
 
+            for ($i = 1; $i <= count($alternativas); $i++) {
+
+                $option = new Option;
+
+                $option->id_questao = $id_questao;
+                $option->alternativa = $i;
+                $option->enunciado_alternativa = $alternativas[$i-1];
+                $option->valor = $request->vf[$i];
+                $option->save();
+
+            }
+            return redirect('/questions');
+        }
+    }
+
+    public function edit($id) {
+
+        $question = Question::all();
+        $option = Option::all();
+        
+        return view('edit', ['question' => $question, 'option' => $option]);
     }
 }

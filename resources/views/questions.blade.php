@@ -8,7 +8,7 @@
 
 @foreach ($questions as $question)
 
-<p>{{ $question->id_questao }} - {{ $question->disciplina }}</p>
+<p>{{ $question->id_questao }} - {{ $question->disciplina }} <a href="/edit/">EDITAR</a></p>
     
 @endforeach
 

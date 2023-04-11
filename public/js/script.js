@@ -5,19 +5,18 @@
 tipo.onchange = function(){
 
     var bt = document.getElementById("salvar");
-    var txt = document.getElementById("enunciado");
     var bts1 = document.getElementById("botoes_fechada_1");
     var bts2 = document.getElementById("botoes_fechada_2");
+    var bts3 = document.getElementById("botoes_vf");
     bt.style.display = 'block';
-    txt.style.display = 'block';
 
-    var select = document.getElementById("tipo");
+    var tipo = document.getElementById("tipo");
     var aberta = document.getElementById("questao-aberta");
     var fechada1 = document.getElementById("questao-fechada-1");
     var fechada2 = document.getElementById("questao-fechada-2");
-    var vf = document.getElementById("questao-vf");
+    var vf = document.getElementById("questao_vf");
 
-    var valor = select.options[select.selectedIndex].value;
+    var valor = tipo.options[tipo.selectedIndex].value;
     if (valor == 1) {
 
         fechada1.style.display = 'none';
@@ -26,6 +25,7 @@ tipo.onchange = function(){
         aberta.style.display = 'block';
         bts1.style.display = 'none';
         bts2.style.display = 'none';
+        bts3.style.display = 'none';
 
     } else if (valor == 2) {
 
@@ -35,6 +35,7 @@ tipo.onchange = function(){
         aberta.style.display = 'none';
         bts1.style.display = 'block';
         bts2.style.display = 'none';
+        bts3.style.display = 'none';
 
     } else if ( valor == 3) {
 
@@ -44,6 +45,7 @@ tipo.onchange = function(){
         aberta.style.display = 'none';
         bts1.style.display = 'none';
         bts2.style.display = 'block';
+        bts3.style.display = 'none';
 
     } else {
 
@@ -53,6 +55,7 @@ tipo.onchange = function(){
         aberta.style.display = 'none';
         bts1.style.display = 'none';
         bts2.style.display = 'none';
+        bts3.style.display = 'block';
     }
 }
 
@@ -83,7 +86,7 @@ function adicionarAlternativa(id, tipo, nome1, nome2) {
 
     var resposta = document.createElement('input');
     resposta.setAttribute('type', 'text');
-    resposta.setAttribute('placeholder', 'Resposta...');
+    resposta.setAttribute('placeholder', 'Texto...');
     resposta.setAttribute('name', nome2);
 
 
@@ -102,3 +105,44 @@ function removerAlternativa(id) {
 }
 
 // FIM 2
+
+// INÍCIO 3
+
+function adicionarAlternativaVf() {
+
+    var tabela = document.getElementById('tabela_vf');
+
+    var coluna = document.createElement('tr');
+    var linha1 = document.createElement('td');
+    var linha2 = document.createElement('td');
+    var linha3 = document.createElement('td');
+
+    tabela.appendChild(coluna);
+    coluna.appendChild(linha1);
+    coluna.appendChild(linha2);
+    coluna.appendChild(linha3)
+
+    var texto = document.createElement('input');
+    texto.setAttribute('type', 'text');
+    texto.setAttribute('placeholder', 'Texto...');
+    texto.setAttribute('name', 'respostavf[]');
+
+    qtd = tabela.getElementsByTagName('tr').length;
+
+    var verdadeiro = document.createElement('input');
+    verdadeiro.setAttribute('type', 'radio');
+    verdadeiro.setAttribute('name', 'vf['+(qtd-1)+']');
+    verdadeiro.setAttribute('value', '1');
+
+    var falso = document.createElement('input');
+    falso.setAttribute('type', 'radio');
+    falso.setAttribute('name', 'vf['+(qtd-1)+']');
+    falso.setAttribute('value', '0');
+
+    linha1.appendChild(texto);
+    linha2.appendChild(verdadeiro);
+    linha3.appendChild(falso);
+
+}
+
+// FIM 3

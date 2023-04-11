@@ -23,4 +23,6 @@ Route::get('/questions', [QuestionController::class, 'index']);
 
 Route::get('/create', [QuestionController::class, 'create']);
 
+Route::get('/edit/{id}', [QuestionController::class, 'edit']);
+
 Route::post('/enviar', [QuestionController::class, 'store']);
