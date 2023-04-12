@@ -8,7 +8,7 @@
 
     <!-- CSS -->
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="icon" type= "image/x-icon" href="img/favicon.ico">
 
     <!-- Google Fonts-->
@@ -24,7 +24,15 @@
 </head>
 <body>
 
+<h1>@yield('header')</h1>
+
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/questions">Questions</a></li>
+</ul>
+
 @yield('content')
 
+<script src="{{ asset('/js/script.js') }}"></script>
 </body>
 </html>

@@ -2,9 +2,8 @@
 
 @section('title', 'Home')
 
+@section('header', 'Welcome')
+
 @section('content')
 
-<h1> SISTEMA DE PROVAS </h1>
-
-<a href="/questions">QUESTÕES</a>
 @endsection

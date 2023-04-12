@@ -2,16 +2,16 @@
 
 @section('title', 'Questões')
 
-@section('content')
+@section('header', 'Questions')
 
-<h1>QUESTÕES</h1>
+@section('content')
 
 @foreach ($questions as $question)
 
-<p>{{ $question->id_questao }} - {{ $question->disciplina }} <a href="/edit/">EDITAR</a></p>
+<p> {{ $question->id }} - {{ $question->title }} <a href="/questions/edit/{{ $question->id }}">EDITAR</a> <a href="/questions/delete/{{ $question->id }}">DELETAR</a></p>
     
 @endforeach
 
-<a href="/create">CRIAR QUESTÃO</a>
+<a href="/questions/create">CRIAR QUESTÃO</a>
 
 @endsection

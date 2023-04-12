@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_questao', false);
-            $table->foreign('id_questao')->references('id_questao')->on('questions');
+            $table->foreignId('question_id')->constrained('questions');
             $table->string('tag');
             $table->timestamps();
         });

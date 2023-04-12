@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_questao', false);
-            $table->foreign('id_questao')->references('id_questao')->on('questions');
-            $table->integer('alternativa');
-            $table->text('enunciado_alternativa');
-            $table->boolean('valor');
+            $table->foreignId('question_id')->constrained('questions');
+            $table->text('option');
+            $table->boolean('correct')->default(false);
             $table->timestamps();
         });
     }

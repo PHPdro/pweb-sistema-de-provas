@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->integer('id_questao', false)->primary();
-            $table->string('disciplina');
-            $table->string('tipo');
-            $table->integer('nivel');
-            $table->text('enunciado');
+            $table->id();
+            $table->string('subject');
+            $table->integer('type');
+            $table->string('type_description');
+            $table->integer('difficulty');
+            $table->string('title');
+            $table->text('text');
             $table->timestamps();
         });
     }

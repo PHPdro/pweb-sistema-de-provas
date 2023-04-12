@@ -12,8 +12,9 @@ class QuestionController extends Controller
     public function index() {
 
         $questions = Question::all();
+        $options = Option::all();
 
-        return view('questions', ['questions' => $questions]);
+        return view('questions', ['questions' => $questions, 'options' => $options]);
     }
 
     public function create() {
@@ -25,26 +26,27 @@ class QuestionController extends Controller
 
         $question = new Question;
 
-        $id_questao = random_int(100000, 999999);
-        $tipo = $request->tipo;
+        $question_id = random_int(100000, 999999);
+        $type = $request->type;
 
-        $question->id_questao = $id_questao;
-        $question->disciplina = $request->disciplina;
-        $question->nivel = $request->nivel;
-        $question->enunciado = $request->enunciado;
+        $question->id = $question_id;
+        $question->subject = $request->subject;
+        $question->difficulty = $request->nivel;
+        $question->title = $request->title;
+        $question->text = $request->text;
 
-        if ($tipo == 1) {
+        if ($type == 1) {
 
-            $tipo = "Aberta";
-            $question->tipo = $tipo;
+            $question->type = $request->type;
+            $question->type_description = "Aberta";
             $question->save();
 
             return redirect('/questions');
             
-        } elseif ($tipo == 2) {
-    
-            $tipo = "Múltipla escolha (1 correta)";
-            $question->tipo = $tipo;
+        } elseif ($type == 2) {
+
+            $question->type = $request->type;
+            $question->type_description = "Múltipla escolha (1 correta)";
             $question->save();
 
             $alternativas = $request->respostafechada;
@@ -54,14 +56,13 @@ class QuestionController extends Controller
 
                 $option = new Option;
 
-                $option->id_questao = $id_questao;
-                $option->alternativa = $i;
-                $option->enunciado_alternativa = $alternativas[$i-1];
+                $option->question_id = $question_id;
+                $option->option = $alternativas[$i-1];
 
                 if($i == $correta) {
-                    $option->valor = 1;
+                    $option->correct = 1;
                 } else {
-                    $option->valor = 0;
+                    $option->correct = 0;
                 }
 
                 $option->save();
@@ -69,10 +70,10 @@ class QuestionController extends Controller
 
             return redirect('/questions');
 
-        } elseif ($tipo == 3) {
+        } elseif ($type == 3) {
 
-            $tipo = "Múltipla escolha (mais de 1 correta)";
-            $question->tipo = $tipo;
+            $question->type = $request->type;
+            $question->type_description = "Múltipla escolha (mais de 1 correta)";
             $question->save();
 
             $alternativas = $request->respostafechada2;
@@ -82,16 +83,15 @@ class QuestionController extends Controller
 
                 $option = new Option;
 
-                $option->id_questao = $id_questao;
-                $option->alternativa = $i;
-                $option->enunciado_alternativa = $alternativas[$i-1];
+                $option->question_id = $question_id;
+                $option->option = $alternativas[$i-1];
 
                 foreach($corretas as $correta) {
                     if($correta == $i) {
-                        $option->valor = 1;
+                        $option->correct = 1;
                         break;
                     } else {
-                        $option->valor = 0;
+                        $option->correct = 0;
                     }
                 }
 
@@ -102,8 +102,8 @@ class QuestionController extends Controller
 
         } else {
 
-            $tipo = "V/F";
-            $question->tipo = $tipo;
+            $question->type = $request->type;
+            $question->type_description = "V/F";
             $question->save();
 
             $alternativas = $request->respostavf;
@@ -112,10 +112,9 @@ class QuestionController extends Controller
 
                 $option = new Option;
 
-                $option->id_questao = $id_questao;
-                $option->alternativa = $i;
-                $option->enunciado_alternativa = $alternativas[$i-1];
-                $option->valor = $request->vf[$i];
+                $option->question_id = $question_id;
+                $option->option = $alternativas[$i-1];
+                $option->correct = $request->vf[$i];
                 $option->save();
 
             }
@@ -125,9 +124,69 @@ class QuestionController extends Controller
 
     public function edit($id) {
 
-        $question = Question::all();
-        $option = Option::all();
+        $questions = Question::findOrFail($id);
+        $options = Option::all()->where('question_id', $id);
         
-        return view('edit', ['question' => $question, 'option' => $option]);
+        return view('edit', ['questions' => $questions, 'options' => $options]);
+    }
+
+    public function update(Request $request) {
+    
+        Question::findOrFail($request->id)->update($request->except('correct','option'));
+
+        $questions = Question::findOrFail($request->id);
+        $options = $request->option;
+        $ids = Option::where('question_id', $request->id)->pluck('id');
+
+        for($i = 0; $i < count($options); $i++) {
+            
+            Option::where('id', $ids[$i])->update(['option' => $options[$i]]);
+        }
+
+        if($questions->type == 2) {
+
+            Option::where(['question_id'=> $request->id, 'correct' => 1])->update(['correct' => 0]);
+            Option::where('id', $request->correct)->update(['correct' => 1]);
+            
+            return redirect('/questions');
+
+        } elseif($questions->type == 3) {
+
+            $ids = Option::where('question_id', $request->id)->pluck('id')->toArray();
+
+            $corrects = $request->correct;
+
+            if($corrects != null) {
+                for($i=0;$i<count($corrects);$i++) {
+                    Option::where('id', $corrects[$i])->update(['correct' => 1]);
+                }
+
+                $unchecked = array_diff($ids, $corrects);
+
+                foreach($unchecked as $uncheck) {
+                    Option::where('id', $uncheck)->update(['correct' => 0]);
+                }
+
+            } else {
+                foreach($ids as $id)
+                Option::where('id', $id)->update(['correct' => 0]);
+            }
+
+            return redirect('/questions');
+
+        } elseif($questions->type == 4) {
+
+            $ids = Option::where('question_id', $request->id)->pluck('id')->toArray();
+
+            foreach($ids as $id) {
+                Option::where('id', $id)->update(['correct' => $request->correct[$id]]);
+            }
+
+            return redirect('/questions');
+        }
+    }
+
+    public function destroy($id) {
+        
     }
 }

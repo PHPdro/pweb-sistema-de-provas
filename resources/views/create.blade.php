@@ -2,13 +2,13 @@
 
 @section('title', 'Criar Questão')
 
+@section('header', 'Create question')
+
 @section('content')
 
 <form method="POST" action="{{ url('/enviar') }}">
 
     @csrf
-
-    <h3>CRIAR QUESTÃO</h3>
 
     <div id="dados_questao">
         <table>
@@ -17,7 +17,7 @@
                     <label>Disciplina:</label>
                 </td>
                 <td class="input">
-                    <select id="disciplina" name="disciplina">
+                    <select id="subject" name="subject">
                         <option class="escolha" disabled selected value> -- Escolha uma opção --</option>
                         <option value="PWEB">Programação Web</option>
                         <option value="PROO">Programação Orientada a Objetos</option>
@@ -46,7 +46,7 @@
                     <label>Tipo de questão:</label>
                 </td>
                 <td class="input">
-                    <select id="tipo" name="tipo">
+                    <select id="type" name="type">
                         <option class="escolha" disabled selected value style> -- Escolha uma opção --</option>
                         <option value="1">Aberta</option>
                         <option value="2">Múltipla escolha (1 correta)</option>
@@ -57,10 +57,18 @@
             </tr>
             <tr>
                 <td class="title">
+                    <label>Título:</label>
+                </td>
+                <td>
+                    <input type="text" id="title" name="title" placeholder="Texto...">
+                </td>
+            </tr>
+            <tr>
+                <td class="title">
                     <label>Enunciado:</label>
                 </td>
                 <td>
-                    <textarea name="enunciado" id="enunciado" cols="40" rows="4" placeholder="Qual a fruta que fica com raiva e vai embora? AAAAAAAAAÇAÍ"></textarea>
+                    <input type="text" id="text" name="text" placeholder="Texto...">
                 </td>
             </tr>
         </table>
@@ -153,5 +161,4 @@
 
 </form>
     
-<script src="/js/script.js"></script>
 @endsection

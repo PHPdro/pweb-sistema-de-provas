@@ -2,7 +2,7 @@
 
 // Mostrar/esconder questão de acordo com o tipo selecionado
 
-tipo.onchange = function(){
+type.onchange = function(){
 
     var bt = document.getElementById("salvar");
     var bts1 = document.getElementById("botoes_fechada_1");
@@ -10,13 +10,13 @@ tipo.onchange = function(){
     var bts3 = document.getElementById("botoes_vf");
     bt.style.display = 'block';
 
-    var tipo = document.getElementById("tipo");
+    var type = document.getElementById("type");
     var aberta = document.getElementById("questao-aberta");
     var fechada1 = document.getElementById("questao-fechada-1");
     var fechada2 = document.getElementById("questao-fechada-2");
     var vf = document.getElementById("questao_vf");
 
-    var valor = tipo.options[tipo.selectedIndex].value;
+    var valor = type.options[type.selectedIndex].value;
     if (valor == 1) {
 
         fechada1.style.display = 'none';
@@ -65,7 +65,7 @@ tipo.onchange = function(){
 
 // Adicionar e remover alternativas para questões de múltipla escolha
 
-function adicionarAlternativa(id, tipo, nome1, nome2) {
+function adicionarAlternativa(id, type, nome1, nome2) {
 
     var tabela = document.getElementById(id);
 
@@ -80,7 +80,7 @@ function adicionarAlternativa(id, tipo, nome1, nome2) {
     qtd = tabela.getElementsByTagName('tr').length;
 
     var alternativa = document.createElement('input');
-    alternativa.setAttribute('type', tipo);
+    alternativa.setAttribute('type', type);
     alternativa.setAttribute('name', nome1);
     alternativa.setAttribute('value', qtd.toString());
 
