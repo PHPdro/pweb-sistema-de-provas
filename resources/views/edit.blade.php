@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>{{ $questions->id }}</h1>
+<h1>Edit question #{{ $questions->id }}</h1>
 
 <form action="/questions/update/{{ $questions->id }}" method="POST">
 @csrf
@@ -90,7 +90,16 @@
 
 </table>
 
-<button type="submit">Editar</button>
+<table>
+    <tr>
+        <td>
+            <button type="submit">Update</button>
+        </td>
+        <td>
+            <a class="button" href="/questions">Cancel</a>
+        </td>
+    </tr>
+</table>
 
 </form>
 

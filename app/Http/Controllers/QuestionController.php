@@ -122,6 +122,15 @@ class QuestionController extends Controller
         }
     }
 
+    public function show($id) {
+
+        $question = Question::findOrFail($id);
+
+        $options = Option::all()->where('question_id', $question->id);
+
+        return view('/show', ['question' =>$question, 'options' => $options]);
+    }
+
     public function edit($id) {
 
         $questions = Question::findOrFail($id);
@@ -188,5 +197,16 @@ class QuestionController extends Controller
 
     public function destroy($id) {
         
+        $question = Question::findOrFail($id);
+
+        if ($question->type != 1) {
+
+            Option::where('question_id', $question->id)->delete();
+            $question->delete();
+        } else {
+            $question->delete();
+        }
+        
+        return redirect('/questions');
     }
 }

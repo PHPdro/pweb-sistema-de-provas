@@ -2,8 +2,6 @@
 
 @section('title', 'Home')
 
-@section('header', 'Welcome')
-
 @section('content')
 
 @endsection

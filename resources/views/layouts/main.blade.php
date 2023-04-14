@@ -23,9 +23,7 @@
 
 </head>
 <body>
-
-<h1>@yield('header')</h1>
-
+<h1></h1>
 <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/questions">Questions</a></li>

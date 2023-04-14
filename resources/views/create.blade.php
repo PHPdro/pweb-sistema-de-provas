@@ -2,9 +2,9 @@
 
 @section('title', 'Criar Questão')
 
-@section('header', 'Create question')
-
 @section('content')
+
+<h1>Create question</h1>
 
 <form method="POST" action="{{ url('/enviar') }}">
 
@@ -94,10 +94,10 @@
         <table>
             <tr>
                 <td>
-                    <a class="button" href="#" id="adicionar_fechada_1" onclick="adicionarAlternativa('tabela_fechada_1','radio','alternativa','respostafechada[]')">Adicionar</a>
+                    <a class="button" href="#" id="adicionar_fechada_1" onclick="adicionarAlternativa('tabela_fechada_1','radio','alternativa','respostafechada[]')">Add</a>
                 </td>
                 <td>
-                    <a class="button" href="#" id="remover_fechada_1" onclick="removerAlternativa('tabela_fechada_1')">Remover</a>
+                    <a class="button" href="#" id="remover_fechada_1" onclick="removerAlternativa('tabela_fechada_1')">Remove</a>
                 </td>
             </tr>
         </table>
@@ -120,10 +120,10 @@
         <table>
             <tr>
                 <td>
-                    <a class="button" href="#" id="adicionar_fechada_2" onclick="adicionarAlternativa('tabela_fechada_2','checkbox','check[]','respostafechada2[]')">Adicionar</a>
+                    <a class="button" href="#" id="adicionar_fechada_2" onclick="adicionarAlternativa('tabela_fechada_2','checkbox','check[]','respostafechada2[]')">Add</a>
                 </td>
                 <td>
-                    <a class="button" href="#" id="remover_fechada_2" onclick="removerAlternativa('tabela_fechada_2')">Remover</a>
+                    <a class="button" href="#" id="remover_fechada_2" onclick="removerAlternativa('tabela_fechada_2')">Remove</a>
                 </td>
             </tr>
         </table>
@@ -148,16 +148,16 @@
         <table>
             <tr>
                 <td>
-                    <a class="button" href="#" id="adicionar_vf" onclick="adicionarAlternativaVf()">Adicionar</a>
+                    <a class="button" href="#" id="adicionar_vf" onclick="adicionarAlternativaVf()">Add</a>
                 </td>
                 <td>
-                    <a class="button" href="#" id="remover_vf" onclick="removerAlternativa('tabela_vf')">Remover</a>
+                    <a class="button" href="#" id="remover_vf" onclick="removerAlternativa('tabela_vf')">Remove</a>
                 </td>
             </tr>
         </table>
     </div>
 
-    <div id="salvar" style="display:none;"><p><button type="submit">Salvar</button></p></div>
+    <div id="salvar" style="display:none;"><p><button type="submit">Save</button></p></div>
 
 </form>
     

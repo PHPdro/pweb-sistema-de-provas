@@ -23,8 +23,12 @@ Route::get('/questions', [QuestionController::class, 'index']);
 
 Route::get('/questions/create', [QuestionController::class, 'create']);
 
+Route::post('/enviar', [QuestionController::class, 'store']);
+
+Route::get('/questions/{id}', [QuestionController::class, 'show']);
+
 Route::get('/questions/edit/{id}', [QuestionController::class, 'edit']);
 
 Route::put('/questions/update/{id}', [QuestionController::class, 'update']);
 
-Route::post('/enviar', [QuestionController::class, 'store']);
+Route::delete('/questions/delete/{id}', [QuestionController::class, 'destroy']);
