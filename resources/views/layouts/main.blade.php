@@ -9,7 +9,7 @@
     <!-- CSS -->
 
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <link rel="icon" type= "image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type= "image/x-icon" href="{{ asset('/img/favicon.ico') }}">
 
     <!-- Google Fonts-->
 
@@ -23,11 +23,13 @@
 
 </head>
 <body>
-<h1></h1>
-<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/questions">Questions</a></li>
-</ul>
+
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/questions">Questions</a></li>
+    </ul>
+</nav>
 
 @yield('content')
 

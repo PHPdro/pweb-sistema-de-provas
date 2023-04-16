@@ -6,9 +6,9 @@
 
 <h2>#{{ $question->id }} {{ $question->title }}</h2>
 
-<p>{{ $question->text }}</p>
+<p style="text-align: left">{{ $question->text }}</p>
 
-<table>
+<table class ="show">
     @if ($question->type == 2)
 
         @foreach($options as $option)
@@ -50,18 +50,18 @@
             <th>F</th>
         </tr>
         @foreach($options as $option)
-            <tr>
-                <td>
+            <tr style="text-align:left">
+                <td style="width:94%">
                     <p>{{ $option->option }}</p>
                 </td>
-                <td>
+                <td style="width:3%">
                     @if ($option->correct == 1)
                         <input type="radio" name="correct[{{ $option->id }}]" id="correct" value ="1" checked>
                     @else
                         <input type="radio" name="correct[{{ $option->id }}]" id="correct" value="1">
                     @endif
                 </td>
-                <td>
+                <td style="width:3%">
                     @if ($option->correct == 0)
                         <input type="radio" name="correct[{{ $option->id }}]" id="correct" value ="0" checked>
                     @else

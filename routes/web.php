@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('questions.welcome');
 });
 
 Route::get('/questions', [QuestionController::class, 'index']);
 
 Route::get('/questions/create', [QuestionController::class, 'create']);
 
-Route::post('/enviar', [QuestionController::class, 'store']);
+Route::post('/questions/store', [QuestionController::class, 'store']);
 
 Route::get('/questions/{id}', [QuestionController::class, 'show']);
 

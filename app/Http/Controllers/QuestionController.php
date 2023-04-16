@@ -14,12 +14,12 @@ class QuestionController extends Controller
         $questions = Question::all();
         $options = Option::all();
 
-        return view('questions', ['questions' => $questions, 'options' => $options]);
+        return view('questions.list', ['questions' => $questions, 'options' => $options]);
     }
 
     public function create() {
 
-        return view('create');
+        return view('questions.create');
     }
     
     public function store(Request $request) {
@@ -128,7 +128,7 @@ class QuestionController extends Controller
 
         $options = Option::all()->where('question_id', $question->id);
 
-        return view('/show', ['question' =>$question, 'options' => $options]);
+        return view('questions.show', ['question' =>$question, 'options' => $options]);
     }
 
     public function edit($id) {
@@ -136,7 +136,7 @@ class QuestionController extends Controller
         $questions = Question::findOrFail($id);
         $options = Option::all()->where('question_id', $id);
         
-        return view('edit', ['questions' => $questions, 'options' => $options]);
+        return view('questions.edit', ['questions' => $questions, 'options' => $options]);
     }
 
     public function update(Request $request) {

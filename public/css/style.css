@@ -14,12 +14,17 @@ body {
     text-align: center;
 }
 
-table, td, tr, th {
+table{
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    /* border: 1px solid black; */
 }
+
+table.show {
+    width:45%;
+    margin-left: 0;
+}
+
 
 td.title {
     text-align: right;
@@ -61,7 +66,7 @@ select {
     border-radius: 10px;
 }
 
-input[type=text] {
+input[type=text],[type=password] {
     width: 90%;
     padding: 10px 10px;
     margin: 10px 0;

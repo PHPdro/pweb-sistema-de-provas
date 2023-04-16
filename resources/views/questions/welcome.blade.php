@@ -1,7 +1,9 @@
 @extends('layouts.main')
 
-@section('title', 'Home')
+@section('title', 'Criar Questão')
 
 @section('content')
+
+
 
 @endsection

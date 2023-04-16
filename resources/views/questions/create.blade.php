@@ -6,7 +6,7 @@
 
 <h1>Create question</h1>
 
-<form method="POST" action="{{ url('/enviar') }}">
+<form method="POST" action="{{ url('/questions/store') }}">
 
     @csrf
 
