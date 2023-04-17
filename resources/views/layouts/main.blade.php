@@ -11,25 +11,41 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="icon" type= "image/x-icon" href="{{ asset('/img/favicon.ico') }}">
 
-    <!-- Google Fonts-->
+    <!-- Google Fonts -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> --}}
-
 </head>
 <body>
+
+@auth
 
 <nav>
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/questions">Questions</a></li>
+        <li><a href="/register">Register</a></li>
+        <li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit">
+                    {{ __('Logout') }}
+                </button>
+            </form>
+        </li>
     </ul>
 </nav>
+
+{{-- @else
+<nav>
+    <ul>
+        <li><a href="/login">Login</a></li>
+    </ul>
+</nav>
+     --}}
+@endauth
 
 @yield('content')
 

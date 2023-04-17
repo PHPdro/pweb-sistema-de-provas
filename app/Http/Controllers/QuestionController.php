@@ -6,10 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Option;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
+
     public function index() {
+        if(Auth::check()) {
+            return view('questions.welcome');
+        }
+        return redirect('/login');
+    }
+
+    public function list() {
 
         $questions = Question::all();
         $options = Option::all();

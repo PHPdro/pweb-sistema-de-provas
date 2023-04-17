@@ -14,21 +14,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\AdminAccess;
+use App\Http\Middleware\ProfessorAccess;
 
-Route::get('/', function () {
-    return view('questions.welcome');
+Route::get('/', [QuestionController::class, 'index']);
+
+Route::get('/questions', [QuestionController::class, 'list']); 
+
+Route::middleware(['admin', 'professor'])->group(function() {
+
+    Route::get('/questions/create', [QuestionController::class,'create']);
+    Route::post('/questions/store', [QuestionController::class,'store']);
+    Route::get('/questions/edit/{id}', [QuestionController::class,'edit']);
+    Route::put('/questions/update/{id}', [QuestionController::class,'update']);
+    Route::delete('/questions/delete/{id}', [QuestionController::class,'destroy']);
+
 });
-
-Route::get('/questions', [QuestionController::class, 'index']);
-
-Route::get('/questions/create', [QuestionController::class, 'create']);
-
-Route::post('/questions/store', [QuestionController::class, 'store']);
 
 Route::get('/questions/{id}', [QuestionController::class, 'show']);
 
-Route::get('/questions/edit/{id}', [QuestionController::class, 'edit']);
+// Authentication
 
-Route::put('/questions/update/{id}', [QuestionController::class, 'update']);
+Route::get('/login', [LoginController::class, 'index']);
 
-Route::delete('/questions/delete/{id}', [QuestionController::class, 'destroy']);
+Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware(AdminAccess::class);

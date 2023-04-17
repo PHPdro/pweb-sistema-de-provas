@@ -1,9 +1,11 @@
 @extends('layouts.main')
 
-@section('title', 'Criar Questão')
+@section('title', 'Home')
 
 @section('content')
 
-
+@auth
+<p>Logado como {{ Auth::user()->name }}</p>
+@endauth
 
 @endsection

@@ -25,6 +25,13 @@ table.show {
     margin-left: 0;
 }
 
+table.login {
+    width: 30%;
+    border-radius: 10px;
+    border: 1px solid grey;
+
+}
+
 
 td.title {
     text-align: right;
@@ -67,11 +74,14 @@ select {
 }
 
 input[type=text],[type=password] {
-    width: 90%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    width: 80%;
     padding: 10px 10px;
     margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid grey;
+    /* border-radius: 10px;
+    border: 1px solid grey; */
 }
 
 ul {
