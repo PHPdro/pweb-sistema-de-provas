@@ -23,7 +23,7 @@ Route::get('/', [QuestionController::class, 'index']);
 
 Route::get('/questions', [QuestionController::class, 'list']); 
 
-Route::middleware(['admin', 'professor'])->group(function() {
+Route::middleware('professor')->group(function() {
 
     Route::get('/questions/create', [QuestionController::class,'create']);
     Route::post('/questions/store', [QuestionController::class,'store']);
@@ -43,4 +43,6 @@ Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('au
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware(AdminAccess::class);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('admin');
+
+Route::post('/store', [RegisterController::class, 'store'])->name('store')->middleware('admin');

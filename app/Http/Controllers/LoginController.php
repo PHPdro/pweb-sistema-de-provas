@@ -23,7 +23,9 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('/');
         } else {
-            dd('fodase');
+            return back()->withErrors([
+                'email' => 'Your provided credentials do not match in our records.',
+            ])->onlyInput('email');
         }
     }
 

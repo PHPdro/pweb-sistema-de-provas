@@ -12,6 +12,7 @@ class QuestionController extends Controller
 {
 
     public function index() {
+
         if(Auth::check()) {
             return view('questions.welcome');
         }
@@ -20,15 +21,21 @@ class QuestionController extends Controller
 
     public function list() {
 
-        $questions = Question::all();
-        $options = Option::all();
+        if(Auth::check()) {
+            $questions = Question::all();
+            $options = Option::all();
 
-        return view('questions.list', ['questions' => $questions, 'options' => $options]);
+            return view('questions.list', ['questions' => $questions, 'options' => $options]);
+        }
+        return redirect('/login');
     }
 
     public function create() {
 
-        return view('questions.create');
+        if(Auth::check()) {
+            return view('questions.create');
+        }
+        return redirect('/login');
     }
     
     public function store(Request $request) {

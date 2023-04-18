@@ -26,11 +26,13 @@
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/questions">Questions</a></li>
+        @if (Auth::user()->admin == 1)
         <li><a href="/register">Register</a></li>
-        <li>
+        @endif
+        <li style="float:right;">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit">
+                <button type="submit" class="logout">
                     {{ __('Logout') }}
                 </button>
             </form>

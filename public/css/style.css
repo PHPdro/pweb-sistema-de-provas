@@ -32,7 +32,6 @@ table.login {
 
 }
 
-
 td.title {
     text-align: right;
 }
@@ -66,8 +65,20 @@ button {
     line-height: 25px;
 }
 
+button.logout {
+
+    background:none;
+}
+
+select.profile {
+    width: 50%;
+    padding: 10px 0px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
 select {
-    width: 100%;
+    width: 90%;
     padding: 10px 0px;
     margin: 10px 0;
     border-radius: 10px;
@@ -80,8 +91,6 @@ input[type=text],[type=password] {
     width: 80%;
     padding: 10px 10px;
     margin: 10px 0;
-    /* border-radius: 10px;
-    border: 1px solid grey; */
 }
 
 ul {
@@ -105,5 +114,13 @@ ul {
   }
   
   li a:hover {
+    background-color: #111;
+  }
+
+  button:hover {
+    background-color: #111;
+  }
+
+  a:hover {
     background-color: #111;
   }

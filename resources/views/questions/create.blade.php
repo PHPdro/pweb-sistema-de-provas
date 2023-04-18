@@ -13,12 +13,9 @@
     <div id="dados_questao">
         <table>
             <tr>
-                <td class="title">
-                    <label>Disciplina:</label>
-                </td>
-                <td class="input">
+                <td>
                     <select id="subject" name="subject">
-                        <option class="escolha" disabled selected value> -- Escolha uma opção --</option>
+                        <option class="escolha" disabled selected value>Subject</option>
                         <option value="PWEB">Programação Web</option>
                         <option value="PROO">Programação Orientada a Objetos</option>
                         <option value="APSI">Análise e Projeto de Sistemas de Informação</option>
@@ -27,12 +24,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="title">
-                    <label>Dificuldade:</label>
-                </td>
-                <td class="input">
+                <td>
                     <select id="nivel" name="nivel">
-                        <option class="escolha" disabled selected value> -- Escolha uma opção --</option>
+                        <option class="escolha" disabled selected value>Difficulty</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -42,12 +36,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="title">
-                    <label>Tipo de questão:</label>
-                </td>
-                <td class="input">
+                <td>
                     <select id="type" name="type">
-                        <option class="escolha" disabled selected value style> -- Escolha uma opção --</option>
+                        <option class="escolha" disabled selected value style>Format</option>
                         <option value="1">Aberta</option>
                         <option value="2">Múltipla escolha (1 correta)</option>
                         <option value="3">Múltipla escolha (mais de 1 correta)</option>
@@ -56,19 +47,13 @@
                 </td>
             </tr>
             <tr>
-                <td class="title">
-                    <label>Título:</label>
-                </td>
                 <td>
-                    <input type="text" id="title" name="title" placeholder="Texto...">
+                    <input type="text" id="title" name="title" placeholder="Title...">
                 </td>
             </tr>
             <tr>
-                <td class="title">
-                    <label>Enunciado:</label>
-                </td>
                 <td>
-                    <input type="text" id="text" name="text" placeholder="Texto...">
+                    <input type="text" id="text" name="text" placeholder="Text...">
                 </td>
             </tr>
         </table>
@@ -157,7 +142,9 @@
         </table>
     </div>
 
-    <div id="salvar" style="display:none;"><p><button type="submit">Save</button></p></div>
+    <div id="salvar" style="display:none;">
+        <p><button type="submit">Save</button></p>
+    </div>
 
 </form>
     

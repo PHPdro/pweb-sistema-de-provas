@@ -31,15 +31,17 @@
             </td>
         </tr>
     @endforeach
+</table>
 
-</table>
-<p>
-<table>
-    <tr>
-        <td>
-            <a class="button" style="height:20px;line-height:20px;width:70px" href="/questions/create">+ Create</a>
-        </td>
-    </tr>
-</table>
+@if (Auth::user()->admin == 1 || Auth::user()->professor == 1)
+    <p>
+    <table>
+        <tr>
+            <td>
+                <a class="button" style="height:20px;line-height:20px;width:70px" href="/questions/create">+ Create</a>
+            </td>
+        </tr>
+    </table>
+@endif
 
 @endsection
