@@ -11,23 +11,25 @@ class RegisterController extends Controller
 {
     public function index() {
 
-        return view('register');
+        return view('auth.register');
     }
 
     public function store(Request $request) {
         
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
-            'password' => 'required|min:8',
             'profile' => 'required'
         ]);
+
+        $password = random_int(10000000, 99999999);
 
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($password);
         $user->admin = 0;
+        $user->new_user = 1;
 
         if($request->profile == 1) {
             $user->student = 1;
@@ -39,6 +41,18 @@ class RegisterController extends Controller
 
         $user->save();
 
-        return redirect('/');
+        return view('auth.confirmation', ['password' => $password]);
+    }
+
+    public function edit($id) {
+        
+    }
+
+    public function update(Request $request) {
+
+        User::findOrFail($request->id)->update(['password' => $request->password]);
+        User::findOrFail($request->id)->update(['new_user' => 0]);
+
+        return redirect('/login');
     }
 }

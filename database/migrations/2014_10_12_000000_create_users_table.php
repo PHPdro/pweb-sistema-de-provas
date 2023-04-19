@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('admin')->nullable();
             $table->boolean('student')->nullable();
             $table->boolean('professor')->nullable();
+            $table->boolean('new_user')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

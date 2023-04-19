@@ -25,6 +25,7 @@ class UserFactory extends Factory
             'admin' => 1,
             'student' => 1,
             'professor' => 1,
+            'new_user' => 0,
             'remember_token' => Str::random(10),
         ];
     }

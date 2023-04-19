@@ -121,6 +121,6 @@ ul {
     background-color: #111;
   }
 
-  a:hover {
+  a.button:hover {
     background-color: #111;
   }

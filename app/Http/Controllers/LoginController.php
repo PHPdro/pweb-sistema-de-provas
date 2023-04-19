@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function index() {
 
-        return view('login');
+        return view('auth.login');
     }
 
     public function authenticate(Request $request) {
@@ -21,6 +21,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            if(Auth::user()->new_user == 1) {
+                Auth::logout();
+                return view('auth.password');
+            }
             return redirect('/');
         } else {
             return back()->withErrors([

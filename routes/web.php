@@ -46,3 +46,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->middleware('admin');
 
 Route::post('/store', [RegisterController::class, 'store'])->name('store')->middleware('admin');
+
+Route::put('/update/{id}', [RegisterController::class, 'update'])->name('first_access');

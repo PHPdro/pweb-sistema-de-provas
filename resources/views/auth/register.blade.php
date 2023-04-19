@@ -34,18 +34,6 @@
         </tr>
         <tr>
             <td>
-                <input type="password" name="password" id="password" placeholder="Password...">
-            </td>
-            @if ($errors->has('password'))
-            <tr>
-                <td>
-                    <small>{{ $errors->first('password') }}</small>
-                </td>
-            </tr>
-            @endif
-        </tr>
-        <tr>
-            <td>
                 <select class="profile" name="profile" id="profile">
                     <option class="escolha" disabled selected value style>Select a profile</option>
                     <option value="1">Student</option>
