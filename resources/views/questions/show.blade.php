@@ -72,6 +72,11 @@
         @endforeach
 
     @endif
+    <tr>
+        <td style="text-align:left">
+            <label>Created at {{ $question->created_at }} by...</label>
+        </td>
+    </tr>
 </table>
 
 @endsection

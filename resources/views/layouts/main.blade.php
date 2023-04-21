@@ -21,7 +21,7 @@
 <body>
 
 @auth
-
+@if(Auth::user()->new_user == 0)
 <nav>
     <ul>
         <li><a href="/">Home</a></li>
@@ -39,14 +39,7 @@
         </li>
     </ul>
 </nav>
-
-{{-- @else
-<nav>
-    <ul>
-        <li><a href="/login">Login</a></li>
-    </ul>
-</nav>
-     --}}
+@endif
 @endauth
 
 @yield('content')

@@ -216,7 +216,6 @@ class QuestionController extends Controller
         $question = Question::findOrFail($id);
 
         if ($question->type != 1) {
-
             Option::where('question_id', $question->id)->delete();
             $question->delete();
         } else {

@@ -23,6 +23,7 @@ class User extends Authenticatable
         'admin',
         'student',
         'professor',
+        'new_user',
         'password',
     ];
 

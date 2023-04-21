@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -44,14 +45,15 @@ class RegisterController extends Controller
         return view('auth.confirmation', ['password' => $password]);
     }
 
-    public function edit($id) {
-        
+    public function change_password() {
+
+        return view('auth.changepassword');
     }
 
     public function update(Request $request) {
 
-        User::findOrFail($request->id)->update(['password' => $request->password]);
-        User::findOrFail($request->id)->update(['new_user' => 0]);
+        User::findOrFail(Auth::user()->id)->update(['password' => Hash::make($request->password), 'new_user' => 0]);
+        Auth::logout();
 
         return redirect('/login');
     }

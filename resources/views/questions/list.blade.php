@@ -12,7 +12,6 @@
         <th>TITLE</th>
         <th>SUBJECT</th>
         <th>LEVEL</th>
-        <th>CREATION</th>
     </tr>
     @foreach ($questions as $question)
         <tr style="width:50%;">
@@ -20,7 +19,6 @@
             <td style="width:40%;"><a href="/questions/{{ $question->id }}">{{ $question->title }}</a></td>
             <td style="width:10%">{{ $question->subject }}</td>
             <td style="width:10%">{{ $question->difficulty }}</td>
-            <td style="width:20%">{{ $question->created_at }}</td>
             <td ><a class="button" style="background-color:rgb(0, 255, 191);color:#333;width:50px;" href="/questions/edit/{{ $question->id }}">Edit</a> </td>
             <td>
                 <form action="/questions/delete/{{ $question->id }}" method="POST">

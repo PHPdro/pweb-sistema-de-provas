@@ -4,10 +4,12 @@
 
 @section('content')
 
-<h1>Login</h1>
 <form action="{{ route('authenticate') }}" method="POST">
     @csrf
     <table class="login">
+        <tr>
+            <th><h1>Login</h1></th>
+        </tr>
         <tr>
             <td>
                 <input type="text" name="email" id="email" placeholder="E-mail..." value="{{ old('email') }}">
@@ -32,11 +34,23 @@
             </tr>
             @endif
         </tr>
+
+        <tr><td><p></p></td></tr>
+
+        <tr>
+            <td><button type="submit" style="width:80%">Login</button></td>
+        </tr>
+
+        <tr><td><p></p></td></tr>
+
+        <tr>
+            <td>
+                <a href="/adsfa" style="color:grey;text-decoration:none;">Forgot password?</a>
+            </td>
+        </tr>
+
+        <tr><td><p></p></td></tr>
     </table>
-
-    <p></p>
-
-    <button type="submit">Login</button>
 
 </form>
 

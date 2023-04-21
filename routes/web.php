@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Middleware\AdminAccess;
-use App\Http\Middleware\ProfessorAccess;
 
 Route::get('/', [QuestionController::class, 'index']);
 
@@ -47,4 +45,6 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('admin
 
 Route::post('/store', [RegisterController::class, 'store'])->name('store')->middleware('admin');
 
-Route::put('/update/{id}', [RegisterController::class, 'update'])->name('first_access');
+Route::put('/update/{id}', [RegisterController::class, 'update']);
+
+Route::get('/changepassword', [RegisterController::class, 'change_password']);

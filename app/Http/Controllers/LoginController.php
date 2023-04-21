@@ -22,8 +22,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             if(Auth::user()->new_user == 1) {
-                Auth::logout();
-                return view('auth.password');
+                return redirect('/changepassword');
             }
             return redirect('/');
         } else {

@@ -4,10 +4,10 @@
 
 @section('content')
 
-<h1>Register</h1>
 <form action="{{ route('store') }}" method="POST">
     @csrf
     <table class="login">
+        <tr><th><h1>Register</h1></th></tr>
         <tr>
             <td>
                 <input type="text" name="name" id="name" placeholder="Name..." value="{{ old('name') }}">
@@ -32,6 +32,7 @@
             </tr>
             @endif
         </tr>
+        <tr><td><p></p></td></tr>
         <tr>
             <td>
                 <select class="profile" name="profile" id="profile">
@@ -48,11 +49,14 @@
             </tr>
             @endif
         </tr>
+        <tr><td><p></p></td></tr>
+        <tr>
+            <td>
+                <button type="submit" style="width:80%">Register</button>
+            </td>
+        </tr>
+        <tr><td><p></p></td></tr>
     </table>
-
-    <p></p>
-
-    <button type="submit">Register</button>
 
 </form>
 
