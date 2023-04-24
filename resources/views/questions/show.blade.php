@@ -28,7 +28,7 @@
 
     @elseif ($question->type == 3)
 
-    @foreach($options as $option)
+        @foreach($options as $option)
             <tr>
                 <td>
                     @if ($option->correct == 1)
@@ -74,7 +74,7 @@
     @endif
     <tr>
         <td style="text-align:left">
-            <label>Created at {{ $question->created_at }} by...</label>
+            <label>Created at {{ $question->created_at }} by {{ $users->name }}</label>
         </td>
     </tr>
 </table>

@@ -45,7 +45,7 @@
 
         <tr>
             <td>
-                <a href="/adsfa" style="color:grey;text-decoration:none;">Forgot password?</a>
+                <a href="/changepassword" style="color:grey;text-decoration:none;">Forgot password?</a>
             </td>
         </tr>
 

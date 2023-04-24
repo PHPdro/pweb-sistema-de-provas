@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Option;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
@@ -46,6 +47,7 @@ class QuestionController extends Controller
         $type = $request->type;
 
         $question->id = $question_id;
+        $question->user_id = Auth::user()->id;
         $question->subject = $request->subject;
         $question->difficulty = $request->nivel;
         $question->title = $request->title;
@@ -142,9 +144,11 @@ class QuestionController extends Controller
 
         $question = Question::findOrFail($id);
 
+        $users = User::findOrFail($question->user_id);
+
         $options = Option::all()->where('question_id', $question->id);
 
-        return view('questions.show', ['question' =>$question, 'options' => $options]);
+        return view('questions.show', ['question' =>$question, 'options' => $options, 'users' => $users]);
     }
 
     public function edit($id) {
