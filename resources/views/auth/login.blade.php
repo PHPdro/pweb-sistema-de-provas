@@ -45,7 +45,7 @@
 
         <tr>
             <td>
-                <a href="/changepassword" style="color:grey;text-decoration:none;">Forgot password?</a>
+                <a href="/forgotpassword" style="color:grey;text-decoration:none;">Forgot password?</a>
             </td>
         </tr>
 

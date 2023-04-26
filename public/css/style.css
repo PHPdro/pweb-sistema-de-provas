@@ -85,7 +85,7 @@ select {
     border-radius: 10px;
 }
 
-input[type=text],[type=password] {
+input[type=text],[type=password],[type=date] {
     background: transparent;
     border: none;
     border-bottom: 1px solid #000000;

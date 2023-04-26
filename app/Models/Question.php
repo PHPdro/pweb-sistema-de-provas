@@ -11,6 +11,11 @@ class Question extends Model
 
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->BelongsTo(User::class);
+    }
+
     public function options()
     {
         return $this->hasMany(Option::class);

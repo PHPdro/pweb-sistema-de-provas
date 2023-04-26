@@ -4,7 +4,7 @@
 
 @section('content')
 
-<p>Usuário cadastrado com sucesso</p>
+<p>Usuário cadastrado com sucesso!</p>
 
 <p>Senha provisória: <b>{{ $password }}</b></p>
 

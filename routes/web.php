@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -23,10 +24,10 @@ Route::get('/questions', [QuestionController::class, 'list']);
 
 Route::middleware('professor')->group(function() {
 
-    Route::get('/questions/create', [QuestionController::class,'create']);
-    Route::post('/questions/store', [QuestionController::class,'store']);
-    Route::get('/questions/edit/{id}', [QuestionController::class,'edit']);
-    Route::put('/questions/update/{id}', [QuestionController::class,'update']);
+    Route::get('/questions/create', [QuestionController::class,'create'])->name('questions.create');
+    Route::post('/questions/store', [QuestionController::class,'store'])->name('questions.store');
+    Route::get('/questions/edit/{id}', [QuestionController::class,'edit'])->name('questions.edit');
+    Route::put('/questions/update/{id}', [QuestionController::class,'update'])->name('questions.update');
     Route::delete('/questions/delete/{id}', [QuestionController::class,'destroy']);
 
 });
@@ -48,3 +49,11 @@ Route::post('/store', [RegisterController::class, 'store'])->name('store')->midd
 Route::put('/update/{id}', [RegisterController::class, 'update']);
 
 Route::get('/changepassword', [RegisterController::class, 'change_password']);
+
+// Exam
+
+Route::get('/exams', [ExamController::class, 'index'])->name('exams');
+
+Route::get('/exams/create', [ExamController::class, 'create'])->name('exams.create');
+
+Route::post('/exams/store', [ExamController::class, 'store'])->name('exams.store');
