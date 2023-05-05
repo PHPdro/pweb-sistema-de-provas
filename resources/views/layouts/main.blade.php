@@ -31,7 +31,7 @@
         <li><a href="/register">Register</a></li>
         @endif
         <li style="float:right;">
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{ route('auth.logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="logout">
                     {{ __('Logout') }}

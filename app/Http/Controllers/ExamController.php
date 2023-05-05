@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Question;
 
 class ExamController extends Controller
 {
@@ -14,6 +15,13 @@ class ExamController extends Controller
 
     public function create() {
 
-        return view('exams.create');
+        $questions = Question::all();
+
+        return view('exams.create', ['questions' => $questions]);
+    }
+
+    public function store(Request $request) {
+
+        
     }
 }

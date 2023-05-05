@@ -2,25 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
+// Questions
+
 Route::get('/', [QuestionController::class, 'index']);
 
-Route::get('/questions', [QuestionController::class, 'list']); 
+Route::get('/questions', [QuestionController::class, 'list'])->name('questions');
 
 Route::middleware('professor')->group(function() {
 
@@ -28,7 +19,7 @@ Route::middleware('professor')->group(function() {
     Route::post('/questions/store', [QuestionController::class,'store'])->name('questions.store');
     Route::get('/questions/edit/{id}', [QuestionController::class,'edit'])->name('questions.edit');
     Route::put('/questions/update/{id}', [QuestionController::class,'update'])->name('questions.update');
-    Route::delete('/questions/delete/{id}', [QuestionController::class,'destroy']);
+    Route::delete('/questions/delete/{id}', [QuestionController::class,'destroy'])->name('questions.destroy');
 
 });
 
@@ -36,17 +27,17 @@ Route::get('/questions/{id}', [QuestionController::class, 'show']);
 
 // Authentication
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
 
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('admin');
+Route::get('/register', [RegisterController::class, 'index'])->name('auth.register')->middleware('admin');
 
-Route::post('/store', [RegisterController::class, 'store'])->name('store')->middleware('admin');
+Route::post('/store', [RegisterController::class, 'store'])->name('auth.store')->middleware('admin');
 
-Route::put('/update/{id}', [RegisterController::class, 'update']);
+Route::put('/update/{id}', [RegisterController::class, 'update'])->name('password.update');
 
 Route::get('/changepassword', [RegisterController::class, 'change_password']);
 

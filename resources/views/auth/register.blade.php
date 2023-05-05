@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('store') }}" method="POST">
+<form action="{{ route('auth.store') }}" method="POST">
     @csrf
     <table class="login">
         <tr><th><h1>Register</h1></th></tr>

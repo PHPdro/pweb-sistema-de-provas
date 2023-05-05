@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->integer('questions_amount');
+            $table->integer('time_limit');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

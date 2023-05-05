@@ -10,13 +10,13 @@
 
     @csrf
 
-    <table class="exam">
+    <table>
         <tr>
             <td>
                 <label>Start:</label>
             </td>
             <td>
-                <input type="date">
+                <input type="date" name="start_date">
             </td>
         </tr>
         <tr>
@@ -24,14 +24,14 @@
                 <label>End:</label>
             </td>
             <td>
-                <input type="date">
+                <input type="date" name="end_date">
             </td>
         </tr>
     </table>
-    <table>
+    <table class="exam">
         <tr>
             <td>
-                <select id="subject" name="subject" style="width:100%">
+                <select id="time_limit" name="time_limit" style="width:40%">
                     <option class="escolha" disabled selected value>Time Limit</option>
                     <option value="30">30m</option>
                     <option value="60">1h</option>
@@ -41,8 +41,27 @@
             </td>
         </tr>
     </table>
-
-
+    <table>
+        <tr>
+            <th>
+                Selecione as questões para a prova:
+            </th>
+        </tr>
+        @foreach ($questions as $question)
+            <tr>
+                <td>
+                    <input type="checkbox" name="question" id="question" value="{{ $question->id }}">
+                    <label>#{{ $question->id }} - {{ $question->title }}</label>
+                </td>
+            </tr>
+        @endforeach
+        <tr><td><p></p></td></tr>
+        <tr>
+            <td>
+                <button type="submit" style="width: 80%">Finish</button>
+            </td>
+        </tr>
+    </table>
 </form>
 
 @endsection
