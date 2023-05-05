@@ -29,6 +29,7 @@
         <li><a href="/exams">Exams</a></li>
         @if (Auth::user()->admin == 1)
         <li><a href="/register">Register</a></li>
+        <li><a href="/users">Users</a></li>
         @endif
         <li style="float:right;">
             <form action="{{ route('auth.logout') }}" method="POST">
