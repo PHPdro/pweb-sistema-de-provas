@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Question::class);
     }
+
+    public function exam(): HasMany
+    {
+        return $this->hasMany(Exam::class);
+    }
 }

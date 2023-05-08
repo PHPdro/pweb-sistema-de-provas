@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Option;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
@@ -147,6 +146,8 @@ class QuestionController extends Controller
         $users = $question->user;
 
         $options = $question->options;
+
+        // $letters = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
 
         return view('questions.show', ['question' =>$question, 'options' => $options, 'users' => $users]);
     }

@@ -50,7 +50,7 @@
         @foreach ($questions as $question)
             <tr>
                 <td>
-                    <input type="checkbox" name="question" id="question" value="{{ $question->id }}">
+                    <input type="checkbox" name="question[]" id="question[]" value="{{ $question->id }}">
                     <label>#{{ $question->id }} - {{ $question->title }}</label>
                 </td>
             </tr>

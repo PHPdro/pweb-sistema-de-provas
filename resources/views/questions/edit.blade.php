@@ -96,7 +96,7 @@
             <button type="submit">Update</button>
         </td>
         <td>
-            <a class="button" href="/questions">Cancel</a>
+            <a class="button" href="/questions/{{ $questions->id }}">Cancel</a>
         </td>
     </tr>
 </table>

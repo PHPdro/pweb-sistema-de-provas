@@ -6,6 +6,14 @@
 
 <h1>Exams</h1>
 
+@foreach ($exams as $exam)
+<a href="/exams/{{ $exam->id }}">
+    <div class="card">
+        {{ $exam->id }}
+    </div>
+</a>
+@endforeach
+
 <table>
     <tr>
         <td>

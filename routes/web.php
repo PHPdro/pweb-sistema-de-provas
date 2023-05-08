@@ -48,3 +48,5 @@ Route::get('/exams', [ExamController::class, 'index'])->name('exams');
 Route::get('/exams/create', [ExamController::class, 'create'])->name('exams.create');
 
 Route::post('/exams/store', [ExamController::class, 'store'])->name('exams.store');
+
+Route::post('/exams/{id}', [ExamController::class, 'store'])->name('exams.show');
