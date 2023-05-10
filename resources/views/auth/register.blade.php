@@ -4,59 +4,58 @@
 
 @section('content')
 
+<style>
+
+    input[type="text"], select{
+
+        background-color: white;
+        color: black;
+        border: 1px solid grey;
+        padding: 15px 15px;
+        font-size: 15px;
+    }
+
+    div.card {
+        width:35%;
+    }
+
+</style>
+
 <form action="{{ route('auth.store') }}" method="POST">
     @csrf
-    <table class="login">
-        <tr><th><h1>Register</h1></th></tr>
-        <tr>
-            <td>
-                <input type="text" name="name" id="name" placeholder="Name..." value="{{ old('name') }}">
-            </td>
+
+    <div class="card" style="background-color: white;">
+
+        <h2 style="color: black">Register</h2>
+
+            <input type="text" name="name" id="name" placeholder="Name..." value="{{ old('name') }}">
             @if ($errors->has('name'))
-            <tr>
-                <td>
-                    <small>{{ $errors->first('name') }}</small>
-                </td>
-            </tr>
+                <small>{{ $errors->first('name') }}</small>
             @endif
-        </tr>
-        <tr>
-            <td>
-                <input type="text" name="email" id="email" placeholder="E-mail..." value="{{ old('email') }}">
-            </td>
+
+            <p>
+
+            <input type="text" name="email" id="email" placeholder="E-mail..." value="{{ old('email') }}">
             @if ($errors->has('email'))
-            <tr>
-                <td>
-                    <small>{{ $errors->first('email') }}</small>
-                </td>
-            </tr>
+                <small>{{ $errors->first('email') }}</small>
             @endif
-        </tr>
-        <tr><td><p></p></td></tr>
-        <tr>
-            <td>
-                <select class="profile" name="profile" id="profile">
-                    <option class="escolha" disabled selected value style>Select a profile</option>
-                    <option value="1">Student</option>
-                    <option value="2">Professor</option>
-                </select>
-            </td>
+
+            <p>
+
+            <select name="profile" id="profile">
+                <option class="escolha" disabled selected value style>Select a profile</option>
+                <option value="1">Student</option>
+                <option value="2">Professor</option>
+            </select>
             @if ($errors->has('profile'))
-            <tr>
-                <td>
-                    <small>{{ $errors->first('profile') }}</small>
-                </td>
-            </tr>
+                <small>{{ $errors->first('profile') }}</small>
             @endif
-        </tr>
-        <tr><td><p></p></td></tr>
-        <tr>
-            <td>
-                <button type="submit" style="width:80%">Register</button>
-            </td>
-        </tr>
-        <tr><td><p></p></td></tr>
-    </table>
+        
+        <p>
+
+        <button class="save" type="submit" style="width:70%;margin:auto;font-size:18px">Register user</button>
+
+    </div>
 
 </form>
 

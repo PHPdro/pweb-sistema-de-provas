@@ -4,53 +4,56 @@
 
 @section('content')
 
+<style>
+
+    input[type="text"],[type="password"]{
+
+        background-color: white;
+        color: black;
+        border: 1px solid grey;
+        padding: 14px 14px;
+        font-size: 15px;
+        border-radius:5px;
+    }
+
+    div.card {
+        width:35%;
+    }
+
+    p {
+        color: black;
+    }
+
+</style>
+
 <form action="{{ route('authenticate') }}" method="POST">
     @csrf
-    <table class="login">
-        <tr>
-            <th><h1>Login</h1></th>
-        </tr>
-        <tr>
-            <td>
-                <input type="text" name="email" id="email" placeholder="E-mail..." value="{{ old('email') }}">
-            </td>
-            @if ($errors->has('email'))
-            <tr>
-                <td>
-                    <small>{{ $errors->first('email') }}</small>
-                </td>
-            </tr>
-            @endif
-        </tr>
-        <tr>
-            <td>
-                <input type="password" name="password" id="password" placeholder="Password...">
-            </td>
-            @if ($errors->has('password'))
-            <tr>
-                <td>
-                    <small>{{ $errors->first('password') }}</small>
-                </td>
-            </tr>
-            @endif
-        </tr>
 
-        <tr><td><p></p></td></tr>
+    <div class="card" style="background-color: white;">
 
-        <tr>
-            <td><button type="submit" style="width:80%">Login</button></td>
-        </tr>
+        <h2 style="color: black">Login</h2>
 
-        <tr><td><p></p></td></tr>
+        <p style ="text-align:left;margin-left:40px;margin-bottom:5px"><b>Email</b></p>
 
-        <tr>
-            <td>
-                <a href="/forgotpassword" style="color:grey;text-decoration:none;">Forgot password?</a>
-            </td>
-        </tr>
+        <input type="text" name="email" id="email" value="{{ old('email') }}">
+        @if ($errors->has('email'))
+        <small>{{ $errors->first('email') }}</small>
+        @endif
 
-        <tr><td><p></p></td></tr>
-    </table>
+        <p style ="text-align:left;margin-left:40px;margin-bottom:5px"><b>Password</b></p>
+
+        <input type="password" name="password" id="password">
+        @if ($errors->has('password'))
+            <small>{{ $errors->first('password') }}</small>
+        @endif
+
+        <p style="text-align: right;margin-top:5px;margin-right:40px;"><a href="/forgotpassword" style="color:grey;text-decoration:none;">Forgot password?</a></p>
+
+        <p></p>
+
+        <p><button class="save" type="submit" style="width:70%;margin:auto;font-size:18px">Login</button></p>
+
+    </div>
 
 </form>
 

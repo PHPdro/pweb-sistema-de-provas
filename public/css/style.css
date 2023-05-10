@@ -24,9 +24,17 @@ body {
     text-align: center;
 }
 
+table {
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
 table.show {
     height: auto;
     margin-right: auto;
+    margin-left: 10px;
+
 }
 
 table.login {
@@ -82,8 +90,9 @@ button {
     color: white;
     font-weight: bold;
     line-height: 25px;
-    border: 1px solid #333;
+    border: none;
 }
+
 
 button:hover {
     background-color: #111;
@@ -106,12 +115,29 @@ button.delete {
     width:80px;
     height:43px;
     border-radius:20px;
-
 }
 
 button.delete:hover {
     background-color:#a10909;
 
+}
+
+button.save {
+    
+    background-color:#FFF4A3;
+    font-size: 15px;
+    color:black;
+    width:80px;
+    height:43px;
+    border-radius:20px;
+    margin-right: auto;
+    margin-left: 10px;
+
+}
+
+button.save:hover {
+
+    background-color: #ebd955;
 }
 
 select.profile {
@@ -122,19 +148,25 @@ select.profile {
 }
 
 select {
-    width: 90%;
     padding: 10px 0px;
-    margin: 10px 0;
-    border-radius: 10px;
+    margin: 10px;
+    width: 70%;
+    color:white;
+    background-color: #333;
+    border: none;
+    border-radius: 15px;
 }
 
 input[type=text],[type=password],[type=date] {
-    background: transparent;
+
+    background-color: #333;
     border: none;
     border-bottom: 1px solid #000000;
     width: 80%;
+    color: white;
     padding: 10px 10px;
-    margin: 10px 0;
+    border-radius: 15px;
+    
 }
 
 ul {
@@ -197,4 +229,15 @@ div.card-content{
     padding: 10px;
     margin:auto;
     overflow-wrap: break-word;
+}
+
+div.card-input {
+
+    background-color: #111;
+    border: 1px solid;
+    width: 95%;
+    padding: 10px;
+    margin:auto;  
+    overflow-wrap: break-word;
+    text-align: center;
 }

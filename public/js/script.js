@@ -4,11 +4,9 @@
 
 type.onchange = function(){
 
-    var bt = document.getElementById("salvar");
     var bts1 = document.getElementById("botoes_fechada_1");
     var bts2 = document.getElementById("botoes_fechada_2");
     var bts3 = document.getElementById("botoes_vf");
-    bt.style.display = 'block';
 
     var type = document.getElementById("type");
     var aberta = document.getElementById("questao-aberta");
