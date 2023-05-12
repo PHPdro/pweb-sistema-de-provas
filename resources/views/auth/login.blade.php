@@ -36,16 +36,21 @@
         <p style ="text-align:left;margin-left:40px;margin-bottom:5px"><b>Email</b></p>
 
         <input type="text" name="email" id="email" value="{{ old('email') }}">
-        @if ($errors->has('email'))
-        <small>{{ $errors->first('email') }}</small>
-        @endif
+        <p>
+            @if ($errors->has('email'))
+            <small>{{ $errors->first('email') }}</small>
+            @endif
+        </p>
 
         <p style ="text-align:left;margin-left:40px;margin-bottom:5px"><b>Password</b></p>
 
         <input type="password" name="password" id="password">
-        @if ($errors->has('password'))
+
+        <p>
+            @if ($errors->has('password'))
             <small>{{ $errors->first('password') }}</small>
-        @endif
+            @endif
+        </p>
 
         <p style="text-align: right;margin-top:5px;margin-right:40px;"><a href="/forgotpassword" style="color:grey;text-decoration:none;">Forgot password?</a></p>
 

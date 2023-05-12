@@ -39,13 +39,28 @@ class ExamController extends Controller
         for ($i = 0; $i < count($questions); $i++) {
 
             $question = Question::findOrFail($questions[$i]);
-            $exam->question()->attach($question->id);
+            $exam->questions()->attach($question->id);
         }
 
-        return redirect()->back();
+        return redirect('/exams');
     }
 
-    public function show(Request $request) {
+    public function show($id) {
+        
+        $exam = Exam::findOrFail($id);
+
+        $questions = $exam->questions;
+
+        return view('exams.show', ['exam' => $exam, 'questions' => $questions]);
+    }
+
+    public function destroy($id) {
+
+        $exam = Exam::findOrFail($id);
+
+        $exam->delete();
+
+        return redirect('/exams');
         
     }
 }

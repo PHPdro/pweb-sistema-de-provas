@@ -12,7 +12,7 @@ class Exam extends Model
 {
     use HasFactory;
 
-    public function question(): BelongsToMany
+    public function questions(): BelongsToMany
     {
         return $this->belongsToMany(Question::class);
     }

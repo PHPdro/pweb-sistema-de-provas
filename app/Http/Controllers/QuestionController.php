@@ -22,10 +22,10 @@ class QuestionController extends Controller
     public function list() {
 
         if(Auth::check()) {
-            $questions = Question::all();
-            $options = Option::all();
 
-            return view('questions.list', ['questions' => $questions, 'options' => $options]);
+            $questions = Question::all();   
+
+            return view('questions.list', ['questions' => $questions]);
         }
         return redirect('/login');
     }
@@ -220,12 +220,7 @@ class QuestionController extends Controller
         
         $question = Question::findOrFail($id);
 
-        if ($question->type != 1) {
-            Option::where('question_id', $question->id)->delete();
-            $question->delete();
-        } else {
-            $question->delete();
-        }
+        $question->delete();
         
         return redirect('/questions');
     }

@@ -8,7 +8,7 @@
 
     <h2>Questions</h2>
 
-    @foreach ($questions as $question)
+    @foreach (Auth::user()->questions as $question)
 
     <div class="card-click">
         <a href="/questions/{{ $question->id }}">

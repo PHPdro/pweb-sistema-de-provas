@@ -49,4 +49,6 @@ Route::get('/exams/create', [ExamController::class, 'create'])->name('exams.crea
 
 Route::post('/exams/store', [ExamController::class, 'store'])->name('exams.store');
 
-Route::post('/exams/{id}', [ExamController::class, 'store'])->name('exams.show');
+Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
+
+Route::delete('/exams/delete/{id}', [ExamController::class, 'destroy'])->name('exams.delete');  
