@@ -14,12 +14,12 @@ class ExamController extends Controller
 
         $exams = Exam::all();
 
-        return view('exams.list', ['exams' => $exams]);
+        return view('exams.index', ['exams' => $exams]);
     }
 
     public function create() {
 
-        $questions = Question::all();
+        $questions = Auth::user()->questions;
 
         return view('exams.create', ['questions' => $questions]);
     }
@@ -31,6 +31,8 @@ class ExamController extends Controller
         $exam->user_id = Auth::user()->id;
         $exam->start_date = $request->start_date;
         $exam->end_date = $request->end_date;
+        $exam->title = $request->title;
+        $exam->description = $request->description;
         $exam->time_limit = $request->time_limit;
         $exam->save();
 
@@ -49,9 +51,8 @@ class ExamController extends Controller
         
         $exam = Exam::findOrFail($id);
 
-        $questions = $exam->questions;
 
-        return view('exams.show', ['exam' => $exam, 'questions' => $questions]);
+        return view('exams.show', ['exam' => $exam]);
     }
 
     public function destroy($id) {
@@ -62,5 +63,15 @@ class ExamController extends Controller
 
         return redirect('/exams');
         
+    }
+
+    public function execute($id) {
+
+        $exam = Exam::findOrFail($id);
+
+        $questions = $exam->questions;
+
+        return view('exams.execute', ['exam' => $exam, 'questions' => $questions]);
+
     }
 }

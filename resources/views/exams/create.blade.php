@@ -22,39 +22,76 @@
 
     @csrf
 
-    <div class="card">
-        <h2>Exam creation</h2>
+    <div id="step-1">
 
-        <div class="card-input">
+        <div class="card">
 
-            <p style ="text-align:left;margin-left:40px;margin-bottom:5px"><b>Start date</b></p>
-
-            <input type="date" name="start_date" id="start_date">
-
-            <p style ="text-align:left;margin-left:40px;margin-bottom:5px"><b>End date</b></p>
-
-            <input type="date" name="end_date" id="end_date">
-
-            <p>
-                <select id="time_limit" name="time_limit">
-                    <option class="escolha" disabled selected value>Time Limit</option>
-                    <option value="30">30m</option>
-                    <option value="60">1h</option>
-                    <option value="90">1h30m</option>
-                    <option value="120">2h</option>
-                </select>
-            </p>
-
-            @foreach ($questions as $question)
-            <p style="text-align: left">
-                <input type="checkbox" name="question[]" id="question[]" value="{{ $question->id }}">
-                <label>{{ $question->id }} - {{ $question->title }}</label>
-            </p>
-            @endforeach
+            <img src="/img/1.png" alt="step 1" width="40%">
+    
+            <h2 style="text-align: center">Information</h2>
+    
+            <div class="card-input">
+                
+                <p class="title"><b>Start date</b></p>
+    
+                <input type="date" name="start_date" id="start_date">
+    
+                <p class="title"><b>End date</b></p>
+    
+                <input type="date" name="end_date" id="end_date">
+    
+                <p class="title"><b>Title</b></p>
+    
+                <input type="text" name="title" id="title">
+    
+                <p class="title"><b>Description</b> (optional)</p>
+    
+                <input type="text" name="description" id="description">
+    
+                <p>
+                    <select id="time_limit" name="time_limit">
+                        <option class="escolha" disabled selected value>Time limit</option>
+                        <option value="30">30m</option>
+                        <option value="60">1h</option>
+                        <option value="90">1h30m</option>
+                        <option value="120">2h</option>
+                    </select>
+                </p>
+    
+            </div>
+    
+            <p><a class="button" href="#" style="margin-left:auto;" onclick="nextStep()">Next</a></p>
 
         </div>
 
-        <p><button class="save" type="submit">Save</button></p>
+    </div>
+
+    <div id="step-2" style="display: none;">
+
+        <div class="card">
+
+            <img src="/img/2.png" alt="step 1" width="40%">
+    
+            <h2 style="text-align: center">Questions</h2>
+
+            <div class="card-input">
+
+                @foreach ($questions as $question)
+                <div class="card-click" style="text-align: left">
+                        <input type="checkbox" name="question[]" id="question[]" value="{{ $question->id }}">
+                        <label style="color:white;">{{ $question->id }} - {{ $question->title }}</label>
+                </div>
+                @endforeach
+
+            </div>
+
+            <p style="float:none;clear:both">
+                <a class="button" href="#" style="display:inline-block;margin-right:auto;" onclick="backStep()">Back</a>
+                <button class="save" type="submit" style="display:inline-block">Finish</button>
+            </p>
+
+        </div>
+
     </div>
 
 </form>

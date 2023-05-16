@@ -144,3 +144,21 @@ function adicionarAlternativaVf() {
 }
 
 // FIM 3
+
+function nextStep() {
+
+    first = document.getElementById('step-1');
+    second = document.getElementById('step-2')
+    first.style.display = 'none';
+    second.style.display = 'block';
+
+}
+
+function backStep() {
+
+    first = document.getElementById('step-1');
+    second = document.getElementById('step-2')
+    first.style.display = 'block';
+    second.style.display = 'none';
+
+}

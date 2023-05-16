@@ -16,6 +16,13 @@ p {
     color: white;
 }
 
+p.title {
+
+    text-align:left;
+    margin-left:45px;
+    margin-bottom:5px
+}
+
 option{
     text-align: center;
 }
@@ -205,6 +212,7 @@ div.card {
     margin-top: 50px;
 
 }
+
 
 div.card-click {
     

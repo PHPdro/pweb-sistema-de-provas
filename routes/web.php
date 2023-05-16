@@ -11,19 +11,26 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [QuestionController::class, 'index']);
 
-Route::get('/questions', [QuestionController::class, 'list'])->name('questions');
+Route::get('/exams', [ExamController::class, 'index'])->name('exams');
+Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
 
 Route::middleware('professor')->group(function() {
 
+    Route::get('/questions', [QuestionController::class, 'list'])->name('questions');
     Route::get('/questions/create', [QuestionController::class,'create'])->name('questions.create');
     Route::post('/questions/store', [QuestionController::class,'store'])->name('questions.store');
+    Route::get('/questions/{id}', [QuestionController::class, 'show'])->name('questions.show');
     Route::get('/questions/edit/{id}', [QuestionController::class,'edit'])->name('questions.edit');
     Route::put('/questions/update/{id}', [QuestionController::class,'update'])->name('questions.update');
     Route::delete('/questions/delete/{id}', [QuestionController::class,'destroy'])->name('questions.destroy');
 
+    Route::get('/exams/create', [ExamController::class, 'create'])->name('exams.create');
+    Route::post('/exams/store', [ExamController::class, 'store'])->name('exams.store');
+    Route::delete('/exams/delete/{id}', [ExamController::class, 'destroy'])->name('exams.delete');  
+
 });
 
-Route::get('/questions/{id}', [QuestionController::class, 'show']);
+Route::get('/exams/execute/{id}', [ExamController::class, 'execute'])->name('exams.execute')->middleware('student');
 
 // Authentication
 
@@ -40,15 +47,3 @@ Route::post('/store', [RegisterController::class, 'store'])->name('auth.store')-
 Route::put('/update/{id}', [RegisterController::class, 'update'])->name('password.update');
 
 Route::get('/changepassword', [RegisterController::class, 'change_password']);
-
-// Exam
-
-Route::get('/exams', [ExamController::class, 'index'])->name('exams');
-
-Route::get('/exams/create', [ExamController::class, 'create'])->name('exams.create');
-
-Route::post('/exams/store', [ExamController::class, 'store'])->name('exams.store');
-
-Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
-
-Route::delete('/exams/delete/{id}', [ExamController::class, 'destroy'])->name('exams.delete');  
