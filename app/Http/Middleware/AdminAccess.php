@@ -22,7 +22,7 @@ class AdminAccess
             if(!Auth::check()){
                 return redirect('/login');
             }
-            dd('Você não possui permissão de acesso.');
+            abort(401);
         }
     }
 }

@@ -12,7 +12,6 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', [QuestionController::class, 'index']);
 
 Route::get('/exams', [ExamController::class, 'index'])->name('exams');
-Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
 
 Route::middleware('professor')->group(function() {
 
@@ -29,6 +28,8 @@ Route::middleware('professor')->group(function() {
     Route::delete('/exams/delete/{id}', [ExamController::class, 'destroy'])->name('exams.delete');  
 
 });
+
+Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
 
 Route::get('/exams/execute/{id}', [ExamController::class, 'execute'])->name('exams.execute')->middleware('student');
 
