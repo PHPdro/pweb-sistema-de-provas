@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('exam_id')->constrained('exams')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->datetime('execution_start');
-            $table->datetime('execution_end');
+            $table->date('execution_date');
+            $table->time('execution_start');
+            $table->time('execution_end');
             $table->boolean('finished');
             $table->float('result');
-            $table->timestamps();
+            // $table->timestamps();
+            
         });
     }
 

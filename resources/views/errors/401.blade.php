@@ -1,19 +1,5 @@
-@extends('layouts.main')
-
-@section('title', 'Error 401')
-
-@section('content')
-
-<div class="card">
-
-    <h2>{{ $exception->getMessage() }}</h2>
-
-    <div class="card-content">   
-
-        <img src="/img/sad-capy.jpg" alt="Sad capybara" width="100%">
-
-    </div>
-    
-</div>
-
-@endsection
+@extends('layouts.error')
+@section('title', 'Unauthorized')
+@section('error', '401')
+@section('message', "You're not authorized")
+@section('source', "/img/mad-capy.jpg" )
