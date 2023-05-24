@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -24,6 +25,7 @@ class LoginController extends Controller
             if(Auth::user()->new_user == 1) {
                 return redirect('/changepassword');
             }
+            Log::info('User logged.');
             return redirect('/');
         } else {
             return back()->withErrors([

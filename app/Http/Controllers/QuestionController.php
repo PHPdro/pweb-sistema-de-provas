@@ -25,7 +25,7 @@ class QuestionController extends Controller
 
             $questions = Question::all();   
 
-            return view('questions.list', ['questions' => $questions]);
+            return view('questions.index', ['questions' => $questions]);
         }
         return redirect('/login');
     }
