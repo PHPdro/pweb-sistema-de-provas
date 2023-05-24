@@ -15,6 +15,7 @@
         @if (!(is_null($exam->description)))
             <p><b>Desctiption:</b> {{ $exam->description }}</p>
         @endif
+        <p><b>Number of questions: </b> {{ count($exam->questions) }}</p>
     </div>
 
     @if (Auth::user()->student == 1 && Auth::user()->admin == 0)
