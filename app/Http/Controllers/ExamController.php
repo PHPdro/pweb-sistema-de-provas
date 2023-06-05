@@ -21,7 +21,7 @@ class ExamController extends Controller
     public function create() {
 
         $questions = Auth::user()->questions;
-        $classes = Auth::user()->classes;
+        $classes = Auth::user()->classrooms;
 
         return view('exams.create', ['questions' => $questions, 'classes' => $classes]);
     }

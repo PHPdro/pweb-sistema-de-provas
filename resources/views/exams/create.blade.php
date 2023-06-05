@@ -26,7 +26,7 @@
 
         <div class="card">
 
-            <img src="/img/exam-1.png" alt="step 1" width="50%">
+            <img src="/img/exam-1.png" alt="step 1" width="70%">
     
             <h2 style="text-align: center">Information</h2>
     
@@ -70,7 +70,7 @@
 
         <div class="card">
 
-            <img src="/img/exam-2.png" alt="step 1" width="50%">
+            <img src="/img/exam-2.png" alt="step 1" width="70%">
     
             <h2 style="text-align: center">Questions</h2>
 
@@ -98,7 +98,7 @@
 
         <div class="card">
 
-            <img src="/img/exam-3.png" alt="step 3" width="50%">
+            <img src="/img/exam-3.png" alt="step 3" width="70%">
 
             <h2 style="text-align: center">
                 Classes

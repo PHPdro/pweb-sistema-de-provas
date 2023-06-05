@@ -22,9 +22,9 @@
 
     @if (Auth::user()->admin == 1 || Auth::user()->professor == 1)
 
-    <div>
+    <p>
         <a class="button" style="height:20px;line-height:20px;width:70px" href="{{ route('classes.create') }}">+ Create</a>
-    </div>
+    </p>
     @endif
 
 </div>

@@ -29,7 +29,7 @@
 
         <div class="card">
     
-            <img src="/img/1.png" alt="step 1" width="40%">
+            <img src="/img/class-1.png" alt="step 1" width="40%">
     
             <h2 style="text-align:center">Information</h2>
     
@@ -64,7 +64,7 @@
     
             </div>
     
-            <p><a class="button" href="#" style="margin-left:auto;" onclick="nextStep()">Next</a></p>
+            <p><a class="button" href="#" style="margin-left:auto;" onclick="stepTwo()">Next</a></p>
         </div>
     </div>
     
@@ -72,7 +72,7 @@
     
         <div class="card">
     
-            <img src="/img/2.png" alt="step 1" width="40%">
+            <img src="/img/class-2.png" alt="step 1" width="40%">
     
             <h2 style="text-align: center">Students</h2>
     
@@ -88,7 +88,7 @@
             </div>
     
             <p style="float:none;clear:both">
-                <a class="button" href="#" style="display:inline-block;margin-right:auto;" onclick="backStep()">Back</a>
+                <a class="button" href="#" style="display:inline-block;margin-right:auto;" onclick="stepOne()">Back</a>
                 <button class="save" type="submit" style="display:inline-block">Finish</button>
             </p>
         </div>

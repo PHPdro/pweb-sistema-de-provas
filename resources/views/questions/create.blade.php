@@ -4,6 +4,23 @@
 
 @section('content')
 
+<style>
+
+    input[type="text"], select{
+
+        background-color: #333;
+        color: white;
+        padding: 14px 14px;
+        font-size: 15px;
+        border-radius:5px;
+
+    }
+
+    label {
+        color: white;
+    }
+</style>
+
 <form method="POST" action="{{ url('/questions/store') }}">
 
     @csrf
@@ -14,6 +31,20 @@
         <h2>Question creation</h2>
 
         <div class="card-input">
+
+            <p class="title">
+                <b>Title</b>
+            </p>
+
+            <input type="text" id="title" name="title">
+
+            <p class="title">
+                <b>Text</b>
+            </p>
+
+            <input type="text" id="text" name="text">
+
+            <p></p>
 
             <select id="subject" name="subject">
                 <option class="escolha" disabled selected value>Subject</option>
@@ -43,10 +74,6 @@
                 <option value="3">Múltipla escolha (mais de 1 correta)</option>
                 <option value="4">V/F</option>
             </select>
-
-            <p><input type="text" id="title" name="title" placeholder="Title..."></p>
-
-            <p><input type="text" id="text" name="text" placeholder="Text..."></p>
 
             <div id="questao-aberta" style="display:none;"> </div>
 
