@@ -29,6 +29,7 @@
         <li><a href="/questions">Questions</a></li>
         @endif
         <li><a href="/exams">Exams</a></li>
+        <li><a href="/classes">Classes</a></li>
         @if (Auth::user()->admin == 1)
         <li><a href="/register">Register</a></li>
         <li><a href="/users">Users</a></li>

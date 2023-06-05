@@ -25,7 +25,7 @@ class LoginController extends Controller
             if(Auth::user()->new_user == 1) {
                 return redirect('/changepassword');
             }
-            Log::info('User logged.');
+            Log::info(Auth::user()->name.' logged');
             return redirect('/');
         } else {
             return back()->withErrors([

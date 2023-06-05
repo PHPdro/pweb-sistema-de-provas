@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Exam;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ExamController extends Controller
 {
@@ -20,8 +21,9 @@ class ExamController extends Controller
     public function create() {
 
         $questions = Auth::user()->questions;
+        $classes = Auth::user()->classes;
 
-        return view('exams.create', ['questions' => $questions]);
+        return view('exams.create', ['questions' => $questions, 'classes' => $classes]);
     }
 
     public function store(Request $request) {
@@ -68,6 +70,8 @@ class ExamController extends Controller
     public function execute($id) {
 
         $exam = Exam::findOrFail($id);
+
+        Log::info(Auth::user()->name.' started the exam '.$exam->id);
 
         $questions = $exam->questions;
 

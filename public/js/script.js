@@ -145,20 +145,30 @@ function adicionarAlternativaVf() {
 
 // FIM 3
 
-function nextStep() {
+function stepOne() {
 
-    first = document.getElementById('step-1');
-    second = document.getElementById('step-2')
-    first.style.display = 'none';
-    second.style.display = 'block';
-
-}
-
-function backStep() {
-
-    first = document.getElementById('step-1');
-    second = document.getElementById('step-2')
+    var first = document.getElementById('step-1');
+    var second = document.getElementById('step-2')
     first.style.display = 'block';
     second.style.display = 'none';
 
+}
+
+function stepTwo() {
+
+    var first = document.getElementById('step-1');
+    var second = document.getElementById('step-2')
+    var third = document.getElementById('step-3')
+    first.style.display = 'none';
+    second.style.display = 'block';
+    third.style.display = 'none';
+
+}
+
+function stepThree() {
+
+    var second = document.getElementById('step-2')
+    var third = document.getElementById('step-3')
+    second.style.display = 'none';
+    third.style.display = 'block';
 }
