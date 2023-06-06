@@ -48,5 +48,9 @@ class ClassroomController extends Controller
 
     public function show($id) {
 
+        $class = Classroom::findOrFail($id);
+        $students = $class->users;
+
+        return view('classroom.show', ['class' => $class, 'students' => $students]);
     }
 }

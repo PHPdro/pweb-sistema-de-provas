@@ -8,17 +8,21 @@
 
     <h2>Questions</h2>
 
-    @foreach (Auth::user()->questions as $question)
-
-    <div class="card-click">
-        <a href="/questions/{{ $question->id }}">
-            <div class="questions">
-                {{ $question->title }}
-            </div>
-        </a>
-    </div>
-
-    @endforeach
+    @if (count($questions) == 0)
+        <div class="card-input">
+            <p>No questions found.</p>
+        </div>
+    @else
+        @foreach (Auth::user()->questions as $question)
+        <div class="card-click">
+            <a href="/questions/{{ $question->id }}">
+                <div class="questions">
+                    {{ $question->title }}
+                </div>
+            </a>
+        </div>
+        @endforeach
+    @endif
 
     <p></p>
 

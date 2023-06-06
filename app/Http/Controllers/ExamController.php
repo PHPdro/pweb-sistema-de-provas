@@ -36,6 +36,7 @@ class ExamController extends Controller
         $exam->title = $request->title;
         $exam->description = $request->description;
         $exam->time_limit = $request->time_limit;
+        $exam->classroom_id = $request->classes;
         $exam->save();
 
         $questions = $request->question;
@@ -51,10 +52,19 @@ class ExamController extends Controller
 
     public function show($id) {
         
-        $exam = Exam::findOrFail($id);
+        $classes = Auth::user()->classrooms;
 
+        foreach($classes as $class) {
 
-        return view('exams.show', ['exam' => $exam]);
+            foreach($class->exams as $exam) {
+
+                if($exam->id == $id) {
+
+                    return view('exams.show', ['exam' => $exam]);
+                }
+            }
+        }
+        abort(404);
     }
 
     public function destroy($id) {

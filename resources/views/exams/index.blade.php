@@ -8,34 +8,46 @@
 
     <h2>Exams</h2>
 
-    @if (Auth::user()->student == 1 and Auth::user()->admin == 0)
-
-        @foreach ($exams as $exam)
-
-            <div class="card-click">
-                <a href="/exams/{{ $exam->id }}">
-                    <div class="exams">
-                        {{ $exam->title }}
-                    </div>
-                </a>    
-            </div>
-
-        @endforeach
-    
+    @if (count($exams) == 0)
+        <div class="card-input">
+            <p>No exams found.</p>
+        </div>
     @else
 
-        @foreach (Auth::user()->exams as $exam)
+        @if (Auth::user()->student == 1 and Auth::user()->admin == 0)
 
-            <div class="card-click">
-                <a href="/exams/{{ $exam->id }}">
-                    <div class="exams">
-                        {{ $exam->title }}
+            @foreach (Auth::user()->classrooms as $class)
+
+                @foreach ($class->exams as $exam)
+
+                    <div class="card-click">
+                        <a href="/exams/{{ $exam->id }}">
+                            <div class="exams">
+                                {{ $exam->title }} - {{ $exam->classroom->subject }} {{ $exam->classroom->semester }} {{ $exam->classroom->shift }}
+                            </div>
+                        </a>    
                     </div>
-                </a>    
-            </div>
+                    
+                @endforeach
 
-        @endforeach
-    
+            @endforeach
+        
+        @else
+
+            @foreach (Auth::user()->exams as $exam)
+
+                <div class="card-click">
+                    <a href="/exams/{{ $exam->id }}">
+                        <div class="exams">
+                            {{ $exam->title }} - {{ $exam->classroom->subject }} {{ $exam->classroom->semester }} {{ $exam->classroom->shift }}
+                        </div>
+                    </a>    
+                </div>
+
+            @endforeach
+        
+        @endif
+
     @endif
 
     <p></p>

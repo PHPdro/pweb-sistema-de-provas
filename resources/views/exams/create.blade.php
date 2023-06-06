@@ -15,6 +15,11 @@
         border-radius:5px;
 
     }
+
+    label {
+
+        color: white;
+    }
     
 </style>
 
@@ -79,7 +84,7 @@
                 @foreach ($questions as $question)
                 <div class="card-click" style="text-align: left">
                         <input type="checkbox" name="question[]" id="question[]" value="{{ $question->id }}">
-                        <label style="color:white;">{{ $question->id }} - {{ $question->title }}</label>
+                        <label>{{ $question->id }} - {{ $question->title }}</label>
                 </div>
                 @endforeach
 
@@ -101,21 +106,14 @@
             <img src="/img/exam-3.png" alt="step 3" width="70%">
 
             <h2 style="text-align: center">
-                Classes
+                Class
             </h2>
-
-            <div class="card-click">
-
                 @foreach ($classes as $class)
-
-                    <p>
-                        <input type="checkbox" name="classes[]" value="{{ $class->id }}">
+                    <div class="card-click" style="text-align: left">
+                        <input type="radio" name="classes" value="{{ $class->id }}">
                         <label>{{ $class->subject }} - {{ $class->semester }} - {{ $class->shift }}</label>
-                    </p>
-                    
+                    </div>
                 @endforeach
-
-            </div>
 
             <p style="float:none;clear:both">
                 <a class="button" href="#" style="display:inline-block;margin-right:auto;" onclick="stepTwo()">Back</a>

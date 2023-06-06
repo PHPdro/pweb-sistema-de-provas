@@ -41,6 +41,9 @@
                     <option value="PROO">Programação Orientada a Objetos</option>
                     <option value="APSI">Análise e Projeto de Sistemas de Informação</option>
                     <option value="FNRE">Fundamentos de Redes de Computadores</option>
+                    <option value="SOPE">Sistemas Operacionais</option>
+                    <option value="GOTI">Governança em Tecnologia da Informação</option>
+                    <option value="GESI">Gerência da Segurança da Informação</option>
                 </select>
     
                 <select id="semester" name="semester">
@@ -57,9 +60,9 @@
     
                 <select id="shift" name="shift">
                     <option class="escolha" disabled selected value>Shift</option>
-                    <option value="Matutino">Matutino</option>
-                    <option value="Vespertino">Vespertino</option>
-                    <option value="Noturno">Noturno</option>
+                    <option value="MATUTINO">MATUTINO</option>
+                    <option value="VESPERTINO">VESPERTINO</option>
+                    <option value="NOTURNO">NOTURNO</option>
                 </select>
     
             </div>
