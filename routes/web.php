@@ -7,6 +7,7 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\ExecutionController;
 
 // Questions
 
@@ -31,7 +32,8 @@ Route::middleware('professor')->group(function() {
 });
 
 Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
-Route::get('/exams/execute/{id}', [ExamController::class, 'execute'])->name('exams.execute')->middleware('student');
+Route::get('/exams/execute/{id}', [ExecutionController::class, 'index'])->name('exams.execute')->middleware('student');
+Route::post('/execution/store', [ExecutionController::class, 'store'])->name('execution.store');
 
 // Authentication
 

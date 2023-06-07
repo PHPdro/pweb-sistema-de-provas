@@ -4,11 +4,15 @@
 
 @section('content')
 
-<form action="" method="POST">
+<form action="{{ route('execution.store') }}" method="POST">
 
     @csrf
 
     <div id="exam">
+
+        <div id ="timer">
+            Time left: <span id="time">{{ intdiv($time_left, 60) }}:{{ ((($time_left / 60) - intdiv($time_left, 60)) * 60) + 1 }}</span>
+        </div>
 
         <div class="card">
 
@@ -60,10 +64,6 @@
 
     </div>
 
-        <div id ="timer">
-            Time left: <span id="time">{{ $exam->time_limit }}:00</span>
-        </div>
-
         <div id="end" style="display:none;">
             <div class="card">
                 <h2 style=>Time's over!</h2>
@@ -94,10 +94,10 @@
     }
 
     window.onload = function () {
-        var time_limit = 1 * 10,//{{ $exam->time_limit }} * 60,
+        var time_limit = {{ $time_left }},
             display = document.querySelector('#time');
         startTimer(time_limit, display);
-        const timeout = setTimeout(endMessage, 11000);
+        const timeout = setTimeout(endMessage, {{ $time_left * 1000 }});
     };
 
     function endMessage() {
@@ -107,7 +107,5 @@
     }
 
 </script>
-
-
 
 @endsection

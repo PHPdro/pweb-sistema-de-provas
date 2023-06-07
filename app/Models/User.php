@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Classroom::class);
     }
+
+    public function executions(): HasMany
+    {
+        return $this->hasMany(Execution::class);
+    }
 }

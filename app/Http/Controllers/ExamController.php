@@ -76,16 +76,4 @@ class ExamController extends Controller
         return redirect('/exams');
         
     }
-
-    public function execute($id) {
-
-        $exam = Exam::findOrFail($id);
-
-        Log::info(Auth::user()->name.' started the exam '.$exam->id);
-
-        $questions = $exam->questions;
-
-        return view('exams.execute', ['exam' => $exam, 'questions' => $questions]);
-
-    }
 }
