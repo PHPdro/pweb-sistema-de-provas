@@ -33,7 +33,7 @@ Route::middleware('professor')->group(function() {
 
 Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
 Route::get('/exams/execute/{id}', [ExecutionController::class, 'index'])->name('exams.execute')->middleware('student');
-Route::post('/execution/store', [ExecutionController::class, 'store'])->name('execution.store');
+Route::post('/execution/store/{id}', [ExecutionController::class, 'store'])->name('execution.store');
 
 // Authentication
 
@@ -51,3 +51,7 @@ Route::get('/classes', [ClassroomController::class, 'index'])->name('classes.ind
 Route::get('/classes/create', [ClassroomController::class, 'create'])->name('classes.create');
 Route::post('/classes/store', [ClassroomController::class, 'store'])->name('classes.store');
 Route::get('/classes/{id}', [ClassroomController::class, 'show'])->name('classes.show');
+
+Route::get('/student/{student_id}/{class_id}', [ClassroomController::class, 'student_exams']);
+
+Route::get('/student/{student_id}/exam/{exam_id}', [ClassroomController::class, 'exam']);

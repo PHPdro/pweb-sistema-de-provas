@@ -116,8 +116,6 @@ class QuestionController extends Controller
                 $option->save();
              }
 
-             Cache::forget('questions');
-
              return redirect('/questions');
 
         } else {

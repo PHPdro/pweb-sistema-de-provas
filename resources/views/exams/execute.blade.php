@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('execution.store') }}" method="POST">
+<form action="/execution/store/{{ $exam->id }}" method="POST">
 
     @csrf
 
@@ -26,27 +26,31 @@
 
                 @if ($questions[$i]->type == 1)
                     <p>
-                        <input type="text" name="answer" id="answer">
+                        <input type="text" name="answer[{{ $questions[$i]->id }}]">
                     </p>
                 @else
     
                     @foreach ($questions[$i]->options as $option)
         
                         @if ($questions[$i]->type == 2)
-        
                             <p>
-                                <input type="radio" name="correct[]" id="correct" value ="{{ $option->id }}">
+                                <input type="radio" name="answer[{{ $questions[$i]->id }}]" value ="{{ $option->id }}">
                                 <label>{{ $option->option }}</label>
                             </p>
-        
                         @elseif ($questions[$i]->type == 3)
         
                             <p>
-                                <input type="checkbox" name="correct[]" id="correct" value ="{{ $option->id }}">
+                                <input type="checkbox" name="close[]" value ="{{ $option->id }}">
                                 <label>{{ $option->option }}</label>    
                             </p>
         
                         @elseif ($questions[$i]->type == 4)
+
+                            <p>
+                                {{ $option->option }} 
+                                <input type="radio" name="vf[{{ $option->id }}]" value="{{ $option->id }}">
+                                <input type="radio" name="vf[{{ $option->id }}]" value="{{ $option->id }}">
+                            </p>
                             
                         @endif
                         

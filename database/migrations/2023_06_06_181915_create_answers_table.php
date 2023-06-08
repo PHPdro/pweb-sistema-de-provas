@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('execution_id')->constrained('executions')->onDelete('cascade');
             $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
-            $table->foreignId('option_id')->constrained('options')->onDelete('cascade');
+            $table->foreignId('option_id')->nullable()->constrained('options')->onDelete('cascade');
+            $table->string('text')->nullable();
+            $table->boolean('correct')->nullable();
             $table->timestamps();
         });
     }

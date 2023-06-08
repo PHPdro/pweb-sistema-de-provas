@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Classroom;
 use App\Models\User;
+use App\Models\Execution;
+use App\Models\Exam;
 use Illuminate\Support\Facades\Auth;
 
 class ClassroomController extends Controller
@@ -53,4 +55,30 @@ class ClassroomController extends Controller
 
         return view('classroom.show', ['class' => $class, 'students' => $students]);
     }
+
+    public function student_exams($student_id, $class_id) {
+
+        $student = User::find($student_id);
+
+        $classes = $student->classrooms;
+
+        $exams = Exam::all()->where('classroom_id', $class_id);
+
+        return view('classroom.student_exams', ['student' => $student,'classes' => $classes, 'exams' => $exams]);
+    }
+
+    public function exam($student_id, $exam_id) {
+
+        $answers = Execution::all()->where('user_id', $student_id)->where('exam_id', $exam_id);
+
+        foreach($answers as $answer) {
+
+            $meucu = $answer->answers;
+        }
+
+        $questions = Exam::find($exam_id)->questions;
+
+        return view('classroom.exam', ['questions' => $questions, 'answers' => $meucu]);
+    }
+
 }

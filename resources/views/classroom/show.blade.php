@@ -15,7 +15,7 @@
             @if ($student->professor == 1)
                 <p>{{ $student->name }} - Professor</p>
             @else
-                <p>{{ $student->name }}</p>
+                <p><a href="/student/{{ $student->id }}/{{ $class->id }}">{{ $student->name }}</a></p>
             @endif
         @endforeach
 
